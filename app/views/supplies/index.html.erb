@@ -1,0 +1,31 @@
+<h1>Listing supplies</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Code</th>
+    <th>Description</th>
+    <th>Created at</th>
+    <th>Updated at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @supplies.each do |supply| %>
+  <tr>
+    <td><%= supply.id %></td>
+    <td><%= supply.code %></td>
+    <td><%= supply.description %></td>
+    <td><%= supply.created_at %></td>
+    <td><%= supply.updated_at %></td>
+    <td><%= link_to 'Show', supply %></td>
+    <td><%= link_to 'Edit', edit_supply_path(supply) %></td>
+    <td><%= link_to 'Destroy', supply, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Supply', new_supply_path %>
