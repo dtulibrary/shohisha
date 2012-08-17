@@ -1,4 +1,6 @@
 ProviderStore::Application.routes.draw do
+  resources :providers
+
   resources :supplies
 
   root :to => "home#index"
