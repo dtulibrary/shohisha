@@ -1,6 +1,8 @@
 ProviderStore::Application.routes.draw do
   resources :packages
 
+  resources :consumers
+
   resources :providers
 
   resources :supplies
