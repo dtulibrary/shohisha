@@ -12,13 +12,36 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :short_name %><br />
-    <%= f.text_field :short_name %>
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
   </div>
   <div class="field">
-    <%= f.label :long_name %><br />
-    <%= f.text_field :long_name %>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
   </div>
+  <div class="field">
+    <% for supply in Supply.find(:all) %>
+      <div>
+         <%= check_box_tag "provider[supply_ids][]", supply.id,
+            @provider.supplies.include?(supply) %>
+         <%= supply.description %>
+      </div>
+    <% end %>
+  </div>
+  <p>Consumers</p>
+  <%= f.fields_for :consumers_providers do |builder| %>
+    <%= render "consumers_provider_fields", :f => builder %>
+  <% end %>
+  
+  <p><%= link_to_add_fields "Add Consumer", f, :consumers_providers %></p>
+
+  <p>Packages</p>
+  <%= f.fields_for :packages do |builder| %>
+    <%= render "package_fields", :f => builder %>
+  <% end %>
+  
+  <p><%= link_to_add_fields "Add Package", f, :packages %></p>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

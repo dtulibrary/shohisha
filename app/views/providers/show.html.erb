@@ -1,15 +1,44 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Short name:</b>
-  <%= @provider.short_name %>
+  <b>Code:</b>
+  <%= @provider.code %>
 </p>
 
 <p>
-  <b>Long name:</b>
-  <%= @provider.long_name %>
+  <b>Description:</b>
+  <%= @provider.description %>
 </p>
 
+<p>
+  <b><%= link_to "Supplies", supplies_path %>:</b><br>
+  <ul>
+  <% for supply in @provider.supplies %>
+    <li><%= link_to supply.description, supply %></li>
+  <% end %>
+  </ul>
+</p>
+
+<p>
+  <b><%= link_to "Consumers", consumers_path %>:</b><br>
+  <ul>
+  <% for consumer_provider in @provider.consumers_providers %>
+    <li>
+      <%= link_to consumer_provider.consumer.description, consumer_provider.consumer %>:
+      <%= consumer_provider.fulltext.description %>
+    </li>
+  <% end %>
+  </ul>
+</p>
+
+<p>
+  <b><%= link_to "Packages", packages_path %>:</b><br>
+  <ul>
+  <% for package in @provider.packages %>
+    <li><%= link_to package.description, @package %>
+  <% end %>
+  </ul>
+</p>
 
 <%= link_to 'Edit', edit_provider_path(@provider) %> |
 <%= link_to 'Back', providers_path %>
