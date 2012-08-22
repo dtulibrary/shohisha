@@ -1,4 +1,6 @@
 ProviderStore::Application.routes.draw do
+  resources :ipaddresses
+
   resources :packages do
     resources :consumers
   end

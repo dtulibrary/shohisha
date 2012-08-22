@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Provider:</b>
+  <%= @ipaddress.provider %>
+</p>
+
+<p>
+  <b>Ipaddress:</b>
+  <%= @ipaddress.ipaddress %>
+</p>
+
+
+<%= link_to 'Edit', edit_ipaddress_path(@ipaddress) %> |
+<%= link_to 'Back', ipaddresses_path %>

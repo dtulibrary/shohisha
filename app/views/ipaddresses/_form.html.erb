@@ -1,0 +1,25 @@
+<%= form_for(@ipaddress) do |f| %>
+  <% if @ipaddress.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ipaddress.errors.count, "error") %> prohibited this ipaddress from being saved:</h2>
+
+      <ul>
+      <% @ipaddress.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :provider %><br />
+    <%= f.text_field :provider %>
+  </div>
+  <div class="field">
+    <%= f.label :ipaddress %><br />
+    <%= f.text_field :ipaddress %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
