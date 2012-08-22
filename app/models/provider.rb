@@ -1,5 +1,5 @@
 class Provider < ActiveRecord::Base
-  attr_accessible :description, :code, :supply_ids, :consumers_providers_attributes
+  attr_accessible :description, :code, :supply_ids, :consumers_providers_attributes, :packages_attributes
 
   has_and_belongs_to_many :supplies
   has_many :packages
