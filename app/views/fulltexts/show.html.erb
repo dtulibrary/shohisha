@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Code:</b>
+  <%= @fulltext.code %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @fulltext.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_fulltext_path(@fulltext) %> |
+<%= link_to 'Back', fulltexts_path %>

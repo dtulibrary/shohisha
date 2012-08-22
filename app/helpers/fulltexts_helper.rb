@@ -1,0 +1,2 @@
+module FulltextsHelper
+end
