@@ -1,11 +1,17 @@
 ProviderStore::Application.routes.draw do
   resources :packages
 
+  resources :consumers_providers
+
   resources :fulltexts
 
-  resources :consumers
+  resources :consumers do
+    resources :providers
+  end
 
-  resources :providers
+  resources :providers do
+    resources :consumers
+  end
 
   resources :supplies
 
