@@ -35,7 +35,16 @@
   <b><%= link_to "Packages", packages_path %>:</b><br>
   <ul>
   <% for package in @provider.packages %>
-    <li><%= link_to package.description, @package %>
+    <li><%= link_to package.description, @package %></li>
+  <% end %>
+  </ul>
+</p>
+
+<p>
+  <b>IP addresses:</b><br>
+  <ul>
+  <% for ipaddress in @provider.ipaddresses %>
+    <li><%= ipaddress.ipaddress %></li>
   <% end %>
   </ul>
 </p>

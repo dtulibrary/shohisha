@@ -42,6 +42,13 @@
   
   <p><%= link_to_add_fields "Add Package", f, :packages %></p>
   
+  <p>IP addresses</p>
+  <% f.fields_for :ipaddresses do |builder| %>
+    <%= render "ipaddresses_fields", :f => builder %>
+  <% end %>
+  
+  <p><%= link_to_add_fields "Add IP address", f, :ipaddresses %></p>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
