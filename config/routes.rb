@@ -1,4 +1,6 @@
 ProviderStore::Application.routes.draw do
+  resources :retains
+
   resources :transports
 
   resources :statuses
