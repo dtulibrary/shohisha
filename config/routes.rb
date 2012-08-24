@@ -1,4 +1,6 @@
 ProviderStore::Application.routes.draw do
+  resources :transports
+
   resources :statuses
 
   resources :ipaddresses

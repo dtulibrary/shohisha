@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Code:</b>
+  <%= @transport.code %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @transport.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_transport_path(@transport) %> |
+<%= link_to 'Back', transports_path %>
