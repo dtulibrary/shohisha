@@ -1,0 +1,93 @@
+<%= form_for(@fetcher) do |f| %>
+  <% if @fetcher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fetcher.errors.count, "error") %> prohibited this fetcher from being saved:</h2>
+
+      <ul>
+      <% @fetcher.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :provider %><br />
+    <%= f.text_field :provider %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :transport %><br />
+    <%= f.text_field :transport %>
+  </div>
+  <div class="field">
+    <%= f.label :retain %><br />
+    <%= f.text_field :retain %>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :basename %><br />
+    <%= f.text_field :basename %>
+  </div>
+  <div class="field">
+    <%= f.label :directory %><br />
+    <%= f.text_field :directory %>
+  </div>
+  <div class="field">
+    <%= f.label :seperator %><br />
+    <%= f.text_field :seperator %>
+  </div>
+  <div class="field">
+    <%= f.label :file_filter %><br />
+    <%= f.text_field :file_filter %>
+  </div>
+  <div class="field">
+    <%= f.label :directory_filter %><br />
+    <%= f.text_field :directory_filter %>
+  </div>
+  <div class="field">
+    <%= f.label :format %><br />
+    <%= f.text_field :format %>
+  </div>
+  <div class="field">
+    <%= f.label :set %><br />
+    <%= f.text_field :set %>
+  </div>
+  <div class="field">
+    <%= f.label :set_limit %><br />
+    <%= f.text_field :set_limit %>
+  </div>
+  <div class="field">
+    <%= f.label :charset %><br />
+    <%= f.text_field :charset %>
+  </div>
+  <div class="field">
+    <%= f.label :recursive %><br />
+    <%= f.number_field :recursive %>
+  </div>
+  <div class="field">
+    <%= f.label :remote_delete %><br />
+    <%= f.check_box :remote_delete %>
+  </div>
+  <div class="field">
+    <%= f.label :passive %><br />
+    <%= f.check_box :passive %>
+  </div>
+  <div class="field">
+    <%= f.label :timeout %><br />
+    <%= f.number_field :timeout %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

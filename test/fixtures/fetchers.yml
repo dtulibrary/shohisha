@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  provider: 
+  status: 
+  transport: 
+  retain: 
+  username: MyString
+  password: MyString
+  basename: MyString
+  directory: MyString
+  seperator: MyString
+  file_filter: MyString
+  directory_filter: MyString
+  format: MyString
+  set: MyString
+  set_limit: MyString
+  charset: MyString
+  recursive: 1
+  remote_delete: false
+  passive: false
+  timeout: 1
+
+two:
+  provider: 
+  status: 
+  transport: 
+  retain: 
+  username: MyString
+  password: MyString
+  basename: MyString
+  directory: MyString
+  seperator: MyString
+  file_filter: MyString
+  directory_filter: MyString
+  format: MyString
+  set: MyString
+  set_limit: MyString
+  charset: MyString
+  recursive: 1
+  remote_delete: false
+  passive: false
+  timeout: 1
