@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Code:</b>
+  <%= @deliver_period.code %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @deliver_period.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_deliver_period_path(@deliver_period) %> |
+<%= link_to 'Back', deliver_periods_path %>
