@@ -7,6 +7,7 @@ class Provider < ActiveRecord::Base
   has_many :consumers_providers
   has_many :consumers, :through => :consumers_providers
   has_many :ipaddresses
+  has_many :fetchers
   accepts_nested_attributes_for :consumers_providers, :allow_destroy => true
   accepts_nested_attributes_for :packages, :allow_destroy => true
   accepts_nested_attributes_for :ipaddresses, :allow_destroy => true

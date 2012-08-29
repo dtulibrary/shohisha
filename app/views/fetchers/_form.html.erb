@@ -11,27 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field" id="provider">
     <%= f.label :provider %><br />
-    <%= f.text_field :provider %>
+    <%= f.collection_select(:provider_id, Provider.find(:all), :id, :description) %>
   </div>
-  <div class="field">
+  <div class="field" id="status">
     <%= f.label :status %><br />
-    <%= f.text_field :status %>
+    <%= f.collection_select(:status_id, Status.find(:all), :id, :description) %>
   </div>
-  <div class="field">
+  <!-- Transport change should reload page with all parameters intact 
+       This page should only display relevant fields on reload
+       
+       Other option: Javascript is created which enables/disables fields
+       based on database value.
+    -->
+  <div class="field" id="transport">
     <%= f.label :transport %><br />
-    <%= f.text_field :transport %>
+    <%= f.collection_select(:transport_id, Transport.find(:all), :id, :description,
+     { :prompt => "Select transport" }, { :onchange => "javascript:fetcher_show_fields();" }) %>
   </div>
-  <div class="field">
+  <div class="field" id="retain">
     <%= f.label :retain %><br />
-    <%= f.text_field :retain %>
+    <%= f.collection_select(:retain_id, Retain.find(:all), :id, :description) %>
   </div>
-  <div class="field">
+  <div class="field" id="username">
     <%= f.label :username %><br />
     <%= f.text_field :username %>
   </div>
-  <div class="field">
+  <div class="field" id="password">
     <%= f.label :password %><br />
     <%= f.text_field :password %>
   </div>
@@ -90,4 +97,7 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
+
+<% for %>
 <% end %>

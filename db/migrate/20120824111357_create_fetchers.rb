@@ -1,10 +1,10 @@
 class CreateFetchers < ActiveRecord::Migration
   def change
     create_table :fetchers do |t|
-      t.references :provider
-      t.references :status
-      t.references :transport
-      t.references :retain
+      t.references :provider, :null => false
+      t.references :status, :null => false
+      t.references :transport, :null => false
+      t.references :retain, :null => false
       t.string :username
       t.string :password
       t.string :basename

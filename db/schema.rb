@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120824105702) do
+ActiveRecord::Schema.define(:version => 20120824111357) do
 
   create_table "consumers", :force => true do |t|
     t.string   "code",        :null => false
@@ -49,6 +49,35 @@ ActiveRecord::Schema.define(:version => 20120824105702) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "fetchers", :force => true do |t|
+    t.integer  "provider_id",      :null => false
+    t.integer  "status_id",        :null => false
+    t.integer  "transport_id",     :null => false
+    t.integer  "retain_id",        :null => false
+    t.string   "username"
+    t.string   "password"
+    t.string   "basename"
+    t.string   "directory"
+    t.string   "seperator"
+    t.string   "file_filter"
+    t.string   "directory_filter"
+    t.string   "format"
+    t.string   "set"
+    t.string   "set_limit"
+    t.string   "charset"
+    t.integer  "recursive"
+    t.boolean  "remote_delete"
+    t.boolean  "passive"
+    t.integer  "timeout"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "fetchers", ["provider_id"], :name => "index_fetchers_on_provider_id"
+  add_index "fetchers", ["retain_id"], :name => "index_fetchers_on_retain_id"
+  add_index "fetchers", ["status_id"], :name => "index_fetchers_on_status_id"
+  add_index "fetchers", ["transport_id"], :name => "index_fetchers_on_transport_id"
 
   create_table "fulltexts", :force => true do |t|
     t.string   "code",        :null => false
