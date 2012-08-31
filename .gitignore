@@ -39,3 +39,6 @@ pickle-email-*.html
 
 # Ignore all logfiles. 
 /log/*
+
+*.local.*
+config/initializers/secret_token.rb
