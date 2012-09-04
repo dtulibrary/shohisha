@@ -7,6 +7,7 @@ class Package < ActiveRecord::Base
 
   accepts_nested_attributes_for :consumers_packages, :allow_destroy => true
     
-  validates :code,  :presence => true
+  validates :code,  :presence => true, :uniqueness => true
   validates :description, :presence => true
+  validates :provider, :presence => true
 end
