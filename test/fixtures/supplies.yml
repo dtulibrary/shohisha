@@ -2,10 +2,15 @@
 
 one:
   id: 1
-  code: MyText
-  description: MyText
+  code: articles
+  description: Articles
 
 two:
-  id: 1
-  code: MyText
-  description: MyText
+  id: 2
+  code: ebooks
+  description: Ebooks
+
+three:
+  id: 3
+  code: cash
+  description: Cash transactions

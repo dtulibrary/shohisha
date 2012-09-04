@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  consumer: 
-  provider: 
-  fulltext: 
+  id: 1
+  consumer_id: 1
+  provider_id: 2
+  fulltext: 1
 
 two:
-  consumer: 
-  provider: 
-  fulltext: 
+  id: 2
+  consumer_id: 2
+  provider: 2
+  fulltext: 2

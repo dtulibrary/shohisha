@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  code: MyString
-  description: MyText
+  id: 1
+  code: none
+  description: No fulltext links
 
 two:
-  code: MyString
-  description: MyText
+  id: 2
+  code: local
+  description: Local fulltext links

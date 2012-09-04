@@ -16,13 +16,13 @@ class FetchersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create fetcher" do
-    assert_difference('Fetcher.count') do
-      post :create, :fetcher => { :basename => @fetcher.basename, :charset => @fetcher.charset, :directory => @fetcher.directory, :directory_filter => @fetcher.directory_filter, :file_filter => @fetcher.file_filter, :format => @fetcher.format, :passive => @fetcher.passive, :password => @fetcher.password, :recursive => @fetcher.recursive, :remote_delete => @fetcher.remote_delete, :seperator => @fetcher.seperator, :set => @fetcher.set, :set_limit => @fetcher.set_limit, :timeout => @fetcher.timeout, :username => @fetcher.username }
-    end
+  #test "should create fetcher" do
+  #  assert_difference('Fetcher.count') do
+  #    post :create, :fetcher => { :basename => @fetcher.basename, :charset => @fetcher.charset, :directory => @fetcher.directory, :directory_filter => @fetcher.directory_filter, :file_filter => @fetcher.file_filter, :format => @fetcher.format, :passive => @fetcher.passive, :password => @fetcher.password, :recursive => @fetcher.recursive, :remote_delete => @fetcher.remote_delete, :seperator => @fetcher.seperator, :set => @fetcher.set, :set_limit => @fetcher.set_limit, :timeout => @fetcher.timeout, :username => @fetcher.username }
+  #  end
 
-    assert_redirected_to fetcher_path(assigns(:fetcher))
-  end
+  #   assert_redirected_to fetcher_path(assigns(:fetcher))
+  #end
 
   test "should show fetcher" do
     get :show, :id => @fetcher

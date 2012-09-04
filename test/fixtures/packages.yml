@@ -1,11 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  provider: 
-  code: MyString
-  description: MyText
+  id: 1
+  provider_id: 1
+  code: ebsco_buh
+  description: Ebsco Buh
 
 two:
-  provider: 
-  code: MyString
-  description: MyText
+  id: 2
+  provider_id: 1
+  code: ebsco_aph
+  description: Ebsco Aph
+
+three:
+  id: 3
+  provider_id: 1
+  code: ebsco_afh
+  description: Ebsco Afh

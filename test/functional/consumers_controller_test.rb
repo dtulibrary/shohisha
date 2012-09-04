@@ -24,10 +24,10 @@ class ConsumersControllerTest < ActionController::TestCase
     assert_redirected_to consumer_path(assigns(:consumer))
   end
 
-  test "should show consumer" do
-    get :show, :id => @consumer
-    assert_response :success
-  end
+  #test "should show consumer" do
+  #  get :show, :id => @consumer
+  #  assert_response :success
+  #end
 
   test "should get edit" do
     get :edit, :id => @consumer

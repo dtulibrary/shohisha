@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  provider: 
-  ipaddress: MyString
+  id: 1
+  provider: ebsco
+  ipaddress: 127.0.0.1
 
 two:
-  provider: 
-  ipaddress: MyString
+  id: 2
+  provider: elsevier
+  ipaddress: 127.0.0.2

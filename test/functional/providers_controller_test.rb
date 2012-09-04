@@ -16,13 +16,13 @@ class ProvidersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create provider" do
-    assert_difference('Provider.count') do
-      post :create, :provider => { :description => @provider.description, :code => @provider.code }
-    end
+  #test "should create provider" do
+  #  assert_difference('Provider.count') do
+  #    post :create, :provider => { :description => @provider.description, :code => @provider.code }
+  #  end
 
-    assert_redirected_to provider_path(assigns(:provider))
-  end
+  #  assert_redirected_to provider_path(assigns(:provider))
+  #end
 
   test "should show provider" do
     get :show, :id => @provider

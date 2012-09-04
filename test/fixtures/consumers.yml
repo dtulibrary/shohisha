@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  code: MyString
-  description: MyText
+  id: 1
+  code: dtu
+  description: DTU
 
 two:
-  code: MyString
-  description: MyText
+  id: 2
+  code: aub
+  description: AUB

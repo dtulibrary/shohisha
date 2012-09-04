@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  code: MyString
-  description: MyString
+  id: 1
+  code: inactive
+  description: Inactive
 
 two:
-  code: MyString
-  description: MyString
+  id: 2
+  code: active
+  description: Active

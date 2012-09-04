@@ -16,13 +16,13 @@ class SuppliesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create supply" do
-    assert_difference('Supply.count') do
-      post :create, :supply => { :code => @supply.code, :description => @supply.description, :id => @supply.id }
-    end
+  #test "should create supply" do
+  #  assert_difference('Supply.count') do
+  #    post :create, :supply => { :code => @supply.code, :description => @supply.description, :id => @supply.id }
+  #  end
 
-    assert_redirected_to supply_path(assigns(:supply))
-  end
+  #  assert_redirected_to supply_path(assigns(:supply))
+  #end
 
   test "should show supply" do
     get :show, :id => @supply
