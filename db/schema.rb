@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -106,13 +107,13 @@ ActiveRecord::Schema.define(:version => 20120824111357) do
   add_index "packages", ["provider_id"], :name => "index_packages_on_provider_id"
 
   create_table "providers", :force => true do |t|
-    t.string   "code"
-    t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "code",        :limit => 30, :null => false
+    t.string   "description",               :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
-  add_index "providers", ["code"], :name => "index_providers_on_short_name", :unique => true
+  add_index "providers", ["code"], :name => "index_providers_on_code", :unique => true
 
   create_table "providers_supplies", :id => false, :force => true do |t|
     t.integer "provider_id", :null => false
@@ -134,8 +135,8 @@ ActiveRecord::Schema.define(:version => 20120824111357) do
   end
 
   create_table "supplies", :force => true do |t|
-    t.string   "code",        :limit => 10
-    t.text     "description"
+    t.string   "code",        :limit => 10, :null => false
+    t.text     "description",               :null => false
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
