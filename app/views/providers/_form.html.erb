@@ -20,6 +20,10 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
+    <%= f.label :type_id %><br />
+    <%= f.collection_select(:type_id, ProviderType.find(:all), :id, :description) %>
+  </div>
+  <div class="field">
     <% for supply in Supply.find(:all) %>
       <div>
          <%= check_box_tag "provider[supply_ids][]", supply.id,

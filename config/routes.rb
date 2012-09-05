@@ -1,4 +1,6 @@
 ProviderStore::Application.routes.draw do
+  resources :provider_types
+
   resources :fetchers
 
   resources :deliver_periods
