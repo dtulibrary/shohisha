@@ -7,6 +7,7 @@ set :rvm_type, :system
 require 'bundler/capistrano'
 
 set :application, "#{ENV['HOST']}"
+set :deploy_to, "/var/www/#{ENV['HOST']}"
 
 # server details
 default_run_options[:pty] = true
