@@ -36,6 +36,7 @@ group :development do
   # Static analysis for security vulnerabilities.
   gem 'brakeman'
   gem 'rails_best_practices'
+  gem 'pg'
 end
 
 group :production do
