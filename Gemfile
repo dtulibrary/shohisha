@@ -2,15 +2,12 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 gem 'railties'
+gem 'jquery-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
-gem 'sqlite3'
-
 gem 'json'
-gem 'rspec'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,7 +21,26 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+group :test do
+  gem 'simplecov', :require => false
+  gem 'simplecov-html', :require => false
+  gem 'simplecov-rcov', :require => false
+end
+
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'sqlite3'
+end
+
+group :development do
+  # Static analysis for security vulnerabilities.
+  gem 'brakeman'
+  gem 'rails_best_practices'
+end
+
+group :production do
+  gem 'pg'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -33,7 +49,6 @@ gem 'jquery-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'
