@@ -56,5 +56,5 @@ namespace :db do
     put config, "#{release_path}/config/database.yml"
   end
 end
-before "deploy:assets:precompile", "db:setup"
 
+before "deploy:migrate", "db:setup"
