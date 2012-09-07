@@ -6,7 +6,7 @@ set :rvm_type, :system
 # bundler bootstrap
 require 'bundler/capistrano'
 
-set :application, "shohisha"
+set :application, "#{ENV['HOST']}"
 
 # server details
 default_run_options[:pty] = true
@@ -16,8 +16,8 @@ set :user, "passenger"
 set :use_sudo, false
 
 set :scm, :git
-set :scm_username, ENV['CAP_USER']
-set :repository, ENV['SCM']
+set :scm_username, "#{ENV['CAP_USER']}"
+set :repository, "#{ENV['SCM']}"
 
 if variables.include?(:branch_name)
   set :branch, "#{branch_name}"
@@ -25,24 +25,6 @@ else
   set :branch, "master"
 end
 set :git_enable_submodules, 1
-
-before "deploy:assets:precompile", "config:update", "config:symlink"
-
-# install configuration files not included in main scm
-namespace :config do
-        
-  desc "update configuration from separate repository"
-  task :update do
-    run "mkdir -p #{deploy_to}/shared/config"
-    run "cd ~/shohisha-config-#{env} && git pull && cp database.yml application.local.rb #{deploy_to}/shared/config"
-  end
-  
-  desc "linking configuration to current release"
-  task :symlink do
-    run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{deploy_to}/shared/config/application.local.rb #{release_path}/config/application.local.rb"
-  end
-end
 
 namespace :deploy do
   task :start, :roles => :app do
@@ -59,10 +41,19 @@ namespace :deploy do
   end
 end
 
-role :web, ENV['HOST']
-role :app, ENV['HOST']
-role :db,  ENV['HOST'], :primary => true
+role :web, "#{ENV['HOST']}"
+role :app, "#{ENV['HOST']}"
+role :db,  "#{ENV['HOST']}", :primary => true
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
+
+namespace :db do
+  task :setup do
+    template = File.read("config/deploy/database.yml.erb")
+    config = ERB.new(template).result(binding)
+    put config, "#{release_path}/config/database.yml"
+  end
+end
+before "deploy:assets:precompile", "db:setup"
 

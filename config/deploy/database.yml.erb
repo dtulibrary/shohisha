@@ -1,0 +1,12 @@
+# PostgreSQL. Versions 8.2 and up are supported.
+#
+
+<%=ENV['RAILS_ENV']+':'%>
+<%='  adapter: postgresql'%>
+<%='  encoding: unicode'%>
+<%='  host: '+ENV['HOST']%>
+<%='  database: provider'%>
+<%='  username: provider'%>
+<%='  password: '+ENV['DATABASE_PASSWORD']%>
+<%='  pool: 5'%>
+<%='  timeout: 5000'%>
