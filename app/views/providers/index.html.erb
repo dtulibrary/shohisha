@@ -4,6 +4,7 @@
   <tr>
     <th>Code</th>
     <th>Description</th>
+    <th>Type</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= provider.code %></td>
     <td><%= provider.description %></td>
+    <td><%= provider.provider_type.description %></td>
     <td><%= link_to 'Show', provider %></td>
     <td><%= link_to 'Edit', edit_provider_path(provider) %></td>
     <td><%= link_to 'Destroy', provider, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>

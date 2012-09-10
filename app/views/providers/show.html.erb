@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <b>Type:</b>
+  <%= @provider.provider_type.description %>
+</p>
+
+<p>
   <b><%= link_to "Supplies", supplies_path %>:</b><br>
   <ul>
   <% for supply in @provider.supplies %>

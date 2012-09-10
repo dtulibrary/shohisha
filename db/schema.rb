@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905061634) do
+ActiveRecord::Schema.define(:version => 20120910083018) do
 
   create_table "consumers", :force => true do |t|
     t.string   "code",        :null => false
@@ -116,9 +116,9 @@ ActiveRecord::Schema.define(:version => 20120905061634) do
   create_table "providers", :force => true do |t|
     t.string   "code"
     t.string   "description"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.integer  "type_id",     :default => 1, :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.integer  "provider_type_id", :default => 1, :null => false
   end
 
   add_index "providers", ["code"], :name => "index_providers_on_short_name", :unique => true
