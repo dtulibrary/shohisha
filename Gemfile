@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails'
 gem 'railties'
 gem 'jquery-rails'
+gem 'activeadmin'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
