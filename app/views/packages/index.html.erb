@@ -12,7 +12,7 @@
 
 <% @packages.each do |package| %>
   <tr>
-    <td><%= package.provider %></td>
+    <td><%= package.provider.description %></td>
     <td><%= package.code %></td>
     <td><%= package.description %></td>
     <td><%= link_to 'Show', package %></td>
