@@ -28,10 +28,10 @@
 
 <% @fetchers.each do |fetcher| %>
   <tr>
-    <td><%= fetcher.provider %></td>
-    <td><%= fetcher.status %></td>
-    <td><%= fetcher.transport %></td>
-    <td><%= fetcher.retain %></td>
+    <td><%= fetcher.provider.description %></td>
+    <td><%= fetcher.status.description %></td>
+    <td><%= fetcher.transport.description %></td>
+    <td><%= fetcher.retain.description %></td>
     <td><%= fetcher.username %></td>
     <td><%= fetcher.password %></td>
     <td><%= fetcher.basename %></td>
