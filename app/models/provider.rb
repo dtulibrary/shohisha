@@ -1,6 +1,6 @@
 class Provider < ActiveRecord::Base
   attr_accessible :description, :code, :supply_ids, :consumers_providers_attributes, :packages_attributes,
-    :ipaddresses_attributes, :type_id
+    :ipaddresses_attributes, :provider_type_id
 
   has_and_belongs_to_many :supplies
   has_many :packages
@@ -15,5 +15,5 @@ class Provider < ActiveRecord::Base
 
   validates :code,  :presence => true
   validates :description, :presence => true
-  validates :type_id, :presence => true
+  validates :provider_type_id, :presence => true
 end
