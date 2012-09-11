@@ -28,7 +28,7 @@
   <div class="field" id="transport">
     <%= f.label :transport %><br />
     <%= f.collection_select(:transport_id, Transport.find(:all), :id, :description,
-     { :prompt => "Select transport" }, { :onchange => "javascript:fetcher_show_fields();" }) %>
+     { :prompt => "Select transport" }, { :onchange => "javascript:fetcher_show_fields(this);" }) %>
   </div>
   <div class="field" id="retain">
     <%= f.label :retain %><br />
@@ -42,59 +42,112 @@
     <%= f.label :password %><br />
     <%= f.text_field :password %>
   </div>
-  <div class="field">
+  <div class="field" id="basename">
     <%= f.label :basename %><br />
     <%= f.text_field :basename %>
   </div>
-  <div class="field">
+  <div class="field" id="directory">
     <%= f.label :directory %><br />
     <%= f.text_field :directory %>
   </div>
-  <div class="field">
+  <div class="field" id="seperator">
     <%= f.label :seperator %><br />
     <%= f.text_field :seperator %>
   </div>
-  <div class="field">
+  <div class="field" id="file_filter">
     <%= f.label :file_filter %><br />
     <%= f.text_field :file_filter %>
   </div>
-  <div class="field">
+  <div class="field" id="directory_filter">
     <%= f.label :directory_filter %><br />
     <%= f.text_field :directory_filter %>
   </div>
-  <div class="field">
+  <div class="field" id="format">
     <%= f.label :format %><br />
     <%= f.text_field :format %>
   </div>
-  <div class="field">
+  <div class="field" id="set_name">
     <%= f.label :set %><br />
     <%= f.text_field :set %>
   </div>
-  <div class="field">
+  <div class="field" id="set_limit">
     <%= f.label :set_limit %><br />
     <%= f.text_field :set_limit %>
   </div>
-  <div class="field">
+  <div class="field" id="charset">
     <%= f.label :charset %><br />
     <%= f.text_field :charset %>
   </div>
-  <div class="field">
+  <div class="field" id="recursive">
     <%= f.label :recursive %><br />
     <%= f.number_field :recursive %>
   </div>
-  <div class="field">
+  <div class="field" id="remote_delete">
     <%= f.label :remote_delete %><br />
     <%= f.check_box :remote_delete %>
   </div>
-  <div class="field">
+  <div class="field" id="passive">
     <%= f.label :passive %><br />
     <%= f.check_box :passive %>
   </div>
-  <div class="field">
+  <div class="field" id="timeout">
     <%= f.label :timeout %><br />
     <%= f.number_field :timeout %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+  <% content_for :head do %>
+  <!-- output javascript to select fields -->
+  <script type="text/javascript">
+    var all_fields;
+    var show_fields;
+
+    all_fields = [
+      'username', 'password', 'basename', 'directory', 'seperator',
+      'file_filter', 'directory_filter', 'format', 'set_name', 'set_limit',
+      'charset', 'recursive', 'remote_delete', 'passive', 'timeout'
+    ];
+
+    function display_field(element, index, array)
+    {
+        if (show_fields.indexOf(element) >= 0) {
+            document.getElementById(element).style.display = 'block';
+        } else {
+            document.getElementById(element).style.display = 'none';
+        }
+    }
+
+    function fetcher_show_fields(box)
+    {
+      // Default is to show all fields
+      show_fields = all_fields;
+  <% for transport in Transport.find(:all) %>
+    <% if (transport.code == 'Data::Fetcher::FTP') %>
+      <!-- List fields ftp should see -->
+      if (box.value == <%= transport.id %>) {
+          show_fields = ['username', 'password', 'basename', 'directory',
+            'seperator', 'file_filter', 'directory_filter', 'recursive',
+            'remote_delete', 'passive'];
+      }
+    <% end %>
+    <% if (transport.code == 'Data::Fetcher::FS') %>
+      <!-- List fields fs should see -->
+      if (box.value == <%= transport.id %>) {
+          show_fields = ['directory', 'file_filter', 'directory_filter',
+              'remote_delete'];
+      }
+    <% end %>
+    <% if (transport.code == 'Fetcher::OAI') %>
+      <!-- List fields oai should see -->
+      if (box.value == <%= transport.id %>) {
+          show_fields = ['basename', 'format', 'set_name', 'set_limit',
+            'timeout'];
+      }
+    <% end %>
+  <% end %>
+      all_fields.forEach(display_field);
+    }
+  </script>
+  <% end %>
 <% end %>

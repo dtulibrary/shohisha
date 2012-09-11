@@ -25,7 +25,7 @@ function add_fields(link, association, content) {
   $(link).parent().before(content.replace(regexp, new_id));
 }
 
-function fetcher_show_fields(this) {
-  // Can vi get the text version of
-  alert("Update fields");
-}
+//function fetcher_show_fields(this) {
+  // Can we get the text version of the transport?
+ // alert("Update fields");
+//}
