@@ -1,6 +1,6 @@
 class Ipaddress < ActiveRecord::Base
   belongs_to :provider
-  attr_accessible :ipaddress
+  attr_accessible :address
   
-  validates :ipaddress, :presence => true
+  validates :address, :presence => true
 end

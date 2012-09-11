@@ -48,8 +48,8 @@
 <p>
   <b>IP addresses:</b><br>
   <ul>
-  <% for ipaddress in @provider.ipaddresses %>
-    <li><%= ipaddress.ipaddress %></li>
+  <% for ip in @provider.ipaddresses %>
+    <li><%= ip.address %></li>
   <% end %>
   </ul>
 </p>
