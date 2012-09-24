@@ -34,6 +34,8 @@ ProviderStore::Application.routes.draw do
 
   resources :supplies
 
+  match 'providercode/:code' => 'providers#code'
+
   root :to => "home#index"
 
   get "home/index"

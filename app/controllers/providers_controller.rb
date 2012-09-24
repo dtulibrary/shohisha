@@ -80,4 +80,15 @@ class ProvidersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def code
+    @provider = Provider.find_by_code(params[:code])
+
+    respond_to do |format|
+      format.html { render "show" }
+      format.json { render :json => @provider }
+      format.text { render :text => @provider.id }
+    end
+  end
+
 end

@@ -44,6 +44,14 @@ describe ProvidersController do
     end
   end
 
+  describe "GET providercode#code" do
+    provider = FactoryGirl.create(:provider)
+    it "shows the show template for code lookup" do
+      get :code, code: provider.code
+      response.should render_template :show
+    end
+  end
+
   describe "POST #create" do
     it "creates a new provider" do
       Provider.any_instance.stubs(:valid?).returns(true)
