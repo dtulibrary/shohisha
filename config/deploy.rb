@@ -57,4 +57,4 @@ namespace :db do
   end
 end
 
-before "deploy:migrate", "db:setup"
+before "deploy:assets:precompile", "db:setup"
