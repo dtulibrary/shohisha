@@ -1,4 +1,6 @@
-describe "routing to provider" do
+require 'spec_helper'
+
+#describe "routing to provider" do
 #  it "routes /providers/:id to profile#show for id" do
 #    { :get => "/providers/1" }.should route_to(
 #      :controller => "providers",
@@ -6,5 +8,5 @@ describe "routing to provider" do
 #      :id => "1"
 #    )
 #  end
-end
+#end
 
