@@ -2,7 +2,13 @@ class PackagesController < ApplicationController
   # GET /packages
   # GET /packages.json
   def index
-    @packages = Package.all
+    if (params[:provider_id]) then
+      @packages = Provider.find(params[:provider_id]).packages
+    elsif params[:consumer_id]
+      @packages = Consumer.find(params[:consumer_id]).packages
+    else
+      @packages = Package.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

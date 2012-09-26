@@ -2,7 +2,13 @@ class ProvidersController < ApplicationController
   # GET /providers
   # GET /providers.json
   def index
-    @providers = Provider.all
+    if params[:fetcher_id]
+      @providers = Fetcher.find(params[:fetcher_id]).providers
+    elsif params[:consumer_id]
+      @providers = Consumer.find(params[:consumer_id]).providers
+    else
+      @providers = Provider.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

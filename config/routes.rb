@@ -1,7 +1,9 @@
 ProviderStore::Application.routes.draw do
   resources :provider_types
 
-  resources :fetchers
+  resources :fetchers do
+    resources :providers
+  end
 
   resources :deliver_periods
 
@@ -30,6 +32,8 @@ ProviderStore::Application.routes.draw do
 
   resources :providers do
     resources :consumers
+    resources :fetchers
+    resources :packages
   end
 
   resources :supplies

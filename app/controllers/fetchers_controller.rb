@@ -2,7 +2,11 @@ class FetchersController < ApplicationController
   # GET /fetchers
   # GET /fetchers.json
   def index
-    @fetchers = Fetcher.all
+    if params[:provider_id]
+      @fetchers = Provider.find(params[:provider_id]).fetchers
+    else
+      @fetchers = Fetcher.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
