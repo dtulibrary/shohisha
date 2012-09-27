@@ -145,9 +145,18 @@
             'timeout'];
       }
     <% end %>
+    <% if (transport.code == 'Fetcher::Entrez') %>
+      <!-- List fields entrez should see -->
+      if (box.value == <%= transport.id %>) {
+          show_fields = ['basename', 'directory_filter'];
+      }
+    <% end %>
   <% end %>
       all_fields.forEach(display_field);
     }
+  <% content_for :body_attributes do %>
+    onload="javascript:fetcher_show_fields(document.getElementById('fetcher_transport_id'));"
+  <% end %>
   </script>
   <% end %>
 <% end %>
