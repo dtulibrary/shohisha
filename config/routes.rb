@@ -17,23 +17,27 @@ ProviderStore::Application.routes.draw do
 
   resources :packages do
     resources :consumers
+    resources :consumers_packages, :only => [:index, :show]
   end
 
-  resources :consumers_providers
+  resources :consumers_providers, :only => [:index, :show]
 
-  resources :consumers_packages
+  resources :consumers_packages, :only => [:index, :show]
 
   resources :fulltexts
 
   resources :consumers do
     resources :providers
     resources :packages
+    resources :consumers_providers, :only => [:index, :show]
+    resources :consumers_packages, :only => [:index, :show]
   end
 
   resources :providers do
     resources :consumers
     resources :fetchers
     resources :packages
+    resources :consumers_providers, :only => [:index, :show]
   end
 
   resources :supplies
