@@ -19,6 +19,67 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
+  <div class="field">
+    <%= f.label :uses_basename, "Uses basename" %>
+    <%= f.check_box :uses_basename %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_username, "Uses username" %>
+    <%= f.check_box :uses_username %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_password, "Uses password" %>
+    <%= f.check_box :uses_password %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_charset, "Uses charset" %>
+    <%= f.check_box :uses_charset %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_directory, "Uses directory" %>
+    <%= f.check_box :uses_directory %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_directory_filter, "Uses directory_filter" %>
+    <%= f.check_box :uses_directory_filter %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_file_filter, "Uses file_filter" %>
+    <%= f.check_box :uses_file_filter %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_format, "Uses format" %>
+    <%= f.check_box :uses_format %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_passive, "Uses passive" %>
+    <%= f.check_box :uses_passive %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_recursive, "Uses recursive" %>
+    <%= f.check_box :uses_recursive %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_remote_delete, "Uses remote_delete" %>
+    <%= f.check_box :uses_remote_delete %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_seperator, "Uses seperator" %>
+    <%= f.check_box :uses_seperator %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_set, "Uses set" %>
+    <%= f.check_box :uses_set %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_set_limit, "Uses set_limit" %>
+    <%= f.check_box :uses_set_limit %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_timeout, "Uses timeout" %>
+    <%= f.check_box :uses_timeout %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

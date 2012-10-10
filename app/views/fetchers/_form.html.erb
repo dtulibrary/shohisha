@@ -66,7 +66,7 @@
     <%= f.label :format %><br />
     <%= f.text_field :format %>
   </div>
-  <div class="field" id="set_name">
+  <div class="field" id="set">
     <%= f.label :set %><br />
     <%= f.text_field :set %>
   </div>
@@ -83,11 +83,11 @@
     <%= f.number_field :recursive %>
   </div>
   <div class="field" id="remote_delete">
-    <%= f.label :remote_delete %><br />
+    <%= f.label :remote_delete %>
     <%= f.check_box :remote_delete %>
   </div>
   <div class="field" id="passive">
-    <%= f.label :passive %><br />
+    <%= f.label :passive %>
     <%= f.check_box :passive %>
   </div>
   <div class="field" id="timeout">
@@ -105,7 +105,7 @@
 
     all_fields = [
       'username', 'password', 'basename', 'directory', 'seperator',
-      'file_filter', 'directory_filter', 'format', 'set_name', 'set_limit',
+      'file_filter', 'directory_filter', 'format', 'set', 'set_limit',
       'charset', 'recursive', 'remote_delete', 'passive', 'timeout'
     ];
 
@@ -123,34 +123,18 @@
       // Default is to show all fields
       show_fields = all_fields;
   <% for transport in Transport.find(:all) %>
-    <% if (transport.code == 'Data::Fetcher::FTP') %>
-      <!-- List fields ftp should see -->
       if (box.value == <%= transport.id %>) {
-          show_fields = ['username', 'password', 'basename', 'directory',
-            'seperator', 'file_filter', 'directory_filter', 'recursive',
-            'remote_delete', 'passive'];
+         show_fields = [
+  <%   add_comma = ''
+       Transport.accessible_attributes.to_a.each do |a|
+         if (a =~ /^uses_/ && transport.send(a)) %>
+        <%= add_comma %>'<%= a[5,255] %>'
+  <%     
+           add_comma = ','
+         end
+       end %>
+        ];
       }
-    <% end %>
-    <% if (transport.code == 'Data::Fetcher::FS') %>
-      <!-- List fields fs should see -->
-      if (box.value == <%= transport.id %>) {
-          show_fields = ['directory', 'file_filter', 'directory_filter',
-              'remote_delete'];
-      }
-    <% end %>
-    <% if (transport.code == 'Fetcher::OAI') %>
-      <!-- List fields oai should see -->
-      if (box.value == <%= transport.id %>) {
-          show_fields = ['basename', 'format', 'set_name', 'set_limit',
-            'timeout'];
-      }
-    <% end %>
-    <% if (transport.code == 'Fetcher::Entrez') %>
-      <!-- List fields entrez should see -->
-      if (box.value == <%= transport.id %>) {
-          show_fields = ['basename', 'directory_filter'];
-      }
-    <% end %>
   <% end %>
       all_fields.forEach(display_field);
     }
