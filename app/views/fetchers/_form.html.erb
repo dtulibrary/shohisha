@@ -19,16 +19,14 @@
     <%= f.label :status %><br />
     <%= f.collection_select(:status_id, Status.find(:all), :id, :description) %>
   </div>
-  <!-- Transport change should reload page with all parameters intact 
-       This page should only display relevant fields on reload
-       
-       Other option: Javascript is created which enables/disables fields
-       based on database value.
-    -->
   <div class="field" id="transport">
     <%= f.label :transport %><br />
     <%= f.collection_select(:transport_id, Transport.find(:all), :id, :description,
      { :prompt => "Select transport" }, { :onchange => "javascript:fetcher_show_fields(this);" }) %>
+  </div>
+  <div class="field" id="deliver_period">
+    <%= f.label :deliver_period %><br />
+    <%= f.collection_select(:deliver_period_id, DeliverPeriod.find(:all), :id, :description) %>
   </div>
   <div class="field" id="retain">
     <%= f.label :retain %><br />

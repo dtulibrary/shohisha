@@ -3,15 +3,17 @@ class Fetcher < ActiveRecord::Base
   belongs_to :status
   belongs_to :transport
   belongs_to :retain
+  belongs_to :deliver_period
   attr_accessible :basename, :charset, :directory, :directory_filter,
     :file_filter, :format, :passive, :password, :recursive, :remote_delete,
     :seperator, :set, :set_limit, :timeout, :username, :provider_id,
-    :status_id, :transport_id, :retain_id
+    :status_id, :transport_id, :retain_id, :deliver_period_id
 
   validates :provider, :presence => true
   validates :status, :presence => true
   validates :transport, :presence => true
   validates :retain, :presence => true
+  validates :deliver_period, :presence => true
 
   validates :set_limit, :numericality => { :only_integer => true}, :allow_blank => true
   validates :recursive, :numericality => { :only_integer => true}, :allow_blank => true

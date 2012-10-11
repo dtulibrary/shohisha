@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010055351) do
+ActiveRecord::Schema.define(:version => 20121010134220) do
 
   create_table "consumers", :force => true do |t|
     t.string   "code",        :null => false
@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(:version => 20121010055351) do
   end
 
   create_table "fetchers", :force => true do |t|
-    t.integer  "provider_id",      :null => false
-    t.integer  "status_id",        :null => false
-    t.integer  "transport_id",     :null => false
-    t.integer  "retain_id",        :null => false
+    t.integer  "provider_id",       :null => false
+    t.integer  "status_id",         :null => false
+    t.integer  "transport_id",      :null => false
+    t.integer  "retain_id",         :null => false
     t.string   "username"
     t.string   "password"
     t.string   "basename"
@@ -71,8 +71,9 @@ ActiveRecord::Schema.define(:version => 20121010055351) do
     t.boolean  "remote_delete"
     t.boolean  "passive"
     t.integer  "timeout"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "deliver_period_id"
   end
 
   add_index "fetchers", ["provider_id"], :name => "index_fetchers_on_provider_id"
