@@ -15,7 +15,7 @@ class Fetcher < ActiveRecord::Base
   validates :retain, :presence => true
   validates :deliver_period, :presence => true
 
-  validates :set_limit, :numericality => { :only_integer => true}, :allow_blank => true
+  validates :set_limit, :inclusion => { :in => ['month', 'year'] }, :allow_blank => true
   validates :recursive, :numericality => { :only_integer => true}, :allow_blank => true
   validates :timeout, :numericality => { :only_interger => true}, :allow_blank => true
   validates :charset, :inclusion => { :in => ['utf-8', 'iso-8859-1'] }, :allow_blank => true

@@ -43,12 +43,12 @@ describe Fetcher do
   end
 
   describe "set_limit" do
-    it "fails if set limit isn't numeric" do
+    it "fails if set limit isn't known value" do
       fetcher = FactoryGirl.build(:fetcher, set_limit: "bar").should_not be_valid
     end
 
-    it "works if set limit is numeric" do
-      fetcher = FactoryGirl.build(:fetcher, set_limit: "100").should be_valid
+    it "works if set limit is known value" do
+      fetcher = FactoryGirl.build(:fetcher, set_limit: "month").should be_valid
     end
   end
 
