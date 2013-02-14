@@ -11,4 +11,9 @@ class Consumer < ActiveRecord::Base
 
   validates :code,  :presence => true, :uniqueness => true
   validates :description, :presence => true
+
+  def name
+    "#{description}"
+  end
+
 end

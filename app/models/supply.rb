@@ -6,4 +6,9 @@ class Supply < ActiveRecord::Base
   validates :code,  :presence => true, :uniqueness => true
   validates :description, :presence => true,
                     :length => { :minimum => 5 }
+
+  def name
+    I18n.t code, :scope => 'shohisha.code.supply'
+  end
+
 end

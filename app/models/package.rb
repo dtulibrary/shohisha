@@ -10,4 +10,9 @@ class Package < ActiveRecord::Base
   validates :code,  :presence => true, :uniqueness => true
   validates :description, :presence => true
   validates :provider, :presence => true
+
+  def name
+    "#{description}"
+  end
+
 end

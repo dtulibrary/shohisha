@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      consumers_provider:
+        one: "Consumer/Provider"
+        other: "Consumers/Providers"
+      consumers_package:
+        one: "Package"
+        other: "Packages"

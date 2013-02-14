@@ -1,0 +1,11 @@
+en:
+  shohisha:
+    admin:
+      provider:
+        'details': 'Provider Details'
+        'consumers': 'Consumers'
+        'supplies': 'Supplies'
+      consuner:
+        'details': 'Consumer Details'
+        'providers': 'Providers'
+        'packages': 'Packages'

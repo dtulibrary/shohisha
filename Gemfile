@@ -3,7 +3,9 @@ source 'https://rubygems.org'
 gem 'rails'
 gem 'railties'
 gem 'jquery-rails'
-gem 'activeadmin'
+# 0.5.1 is broken with has_many
+gem 'activeadmin', '0.5.0'
+gem 'devise_cas_authenticatable'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -41,6 +43,7 @@ group :development do
   gem 'brakeman'
   gem 'rails_best_practices'
   gem 'pg'
+  gem 'debugger'
 end
 
 group :production do
@@ -59,5 +62,3 @@ end
 gem 'capistrano'
 gem 'rvm-capistrano'
 
-# To use debugger
-# gem 'ruby-debug'

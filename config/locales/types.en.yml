@@ -1,0 +1,29 @@
+en:
+  shohisha:
+    code:
+      provider_type:
+        'aggregator': 'Aggregator company'
+        'publisher': 'Publisher company'
+      transport:
+        'Data::Fetcher::FTP': 'FTP Transport'
+        'Data::Fetcher::FS': 'File system'
+        'DS2::Fetcher::OAI': 'OAI-PMH'
+        'Data::Fetcher::FS::MAIL': 'Mail (File system)'
+        'Data::Fetcher::FS::CAT': 'File system concat'
+      status:
+        'test':  'Testing'
+        'prod':  'Production'
+        'stage': 'Staging'
+        'off':   'Inactive'
+      retain:
+        'full_single': 'Full delivery everytime'
+      supply:
+        'article': 'Article Metadata'
+        'ebook': 'Ebook Metadata'
+        'journal': 'Journal Metadata'
+        'cash': 'Cash transactions'
+        'cover': 'Cover images'
+      fulltext:
+        'none': 'No handling'
+        'sfx': 'Handle through SFX'
+
