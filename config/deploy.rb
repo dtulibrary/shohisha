@@ -2,19 +2,21 @@
 # bundler bootstrap
 require 'bundler/capistrano'
 
-set :application, "#{ENV['HOST']}"
-set :deploy_to, "/var/www/#{ENV['HOST']}"
+set :rails_env, ENV['RAILS_ENV'] || "staging"
+set :application, ENV['HOST']
+set :deploy_to, "/var/www/#{application}"
 
 # server details
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = false
 set :deploy_via, :remote_cache
+set :copy_exclude, %w(.git spec)
 set :user, "passenger"
 set :use_sudo, false
 
 set :scm, :git
-set :scm_username, "#{ENV['CAP_USER']}"
-set :repository, "#{ENV['SCM']}"
+set :scm_username, ENV['CAP_USER']
+set :repository, ENV['SCM']
 
 if variables.include?(:branch_name)
   set :branch, "#{branch_name}"
@@ -38,10 +40,11 @@ namespace :deploy do
   end
 end
 
-role :web, "#{ENV['HOST']}"
-role :app, "#{ENV['HOST']}"
-role :db,  "#{ENV['HOST']}", :primary => true
+role :web, "#{application}"
+role :app, "#{application}"
+role :db,  "#{application}", :primary => true
 
+before "deploy:assets:precompile", "db:setup", "devise:cassetup"
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
 
@@ -53,4 +56,10 @@ namespace :db do
   end
 end
 
-before "deploy:assets:precompile", "db:setup"
+namespace :devise do
+  task :cassetup do
+    template = File.read("config/deploy/devise_cas_server.rb.erb")
+    config = ERB.new(template).result(binding)
+    put config, "#{release_path}/config/initializers/devise_cas_server.rb"
+  end
+end
