@@ -50,10 +50,12 @@ describe FetchersController do
       status = FactoryGirl.create(:status)
       transport = FactoryGirl.create(:transport)
       retain = FactoryGirl.create(:retain)
+      deliver_period = FactoryGirl.create(:deliver_period)
       Fetcher.any_instance.stubs(:valid?).returns(true)
       post 'create', fetcher: FactoryGirl.attributes_for(:fetcher, 
         provider_id: provider.id, status_id: status.id,
-        transport_id: transport.id, retain_id: retain.id)
+        transport_id: transport.id, retain_id: retain.id,
+        deliver_period_id: deliver_period.id)
       flash[:notice].should_not be_nil
       response.should redirect_to Fetcher.last
     end
