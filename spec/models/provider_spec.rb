@@ -18,4 +18,9 @@ describe Provider do
     @provider = FactoryGirl.build(:provider, provider_type: nil).should_not be_valid
   end
 
+  it "name is the description" do
+    provider = FactoryGirl.build(:provider)
+    provider.name.should eq provider.description
+  end
+
 end

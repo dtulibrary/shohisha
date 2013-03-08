@@ -18,5 +18,9 @@ describe Supply do
     supply = FactoryGirl.build(:supply, description: "desc").should_not be_valid
   end
 
+  it "returns untranslated name" do
+    supply = FactoryGirl.build(:supply)
+    supply.name.should eq "translation missing: en.shohisha.code.supply."+supply.code
+  end
 
 end

@@ -14,4 +14,10 @@ describe Transport do
     transport = FactoryGirl.build(:transport, description: nil).should_not be_valid
   end
 
+  it "returns untranslated name" do
+    transport = FactoryGirl.build(:transport)
+    transport.name.should eq "translation missing: en.shohisha.code.transport."+transport.code
+  end
+
+
 end

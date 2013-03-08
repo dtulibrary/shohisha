@@ -14,4 +14,9 @@ describe Retain do
     retain = FactoryGirl.build(:retain, description: nil).should_not be_valid
   end
 
+  it "returns untranslated name" do
+    retain = FactoryGirl.build(:retain)
+    retain.name.should eq "translation missing: en.shohisha.code.retain."+retain.code
+  end
+
 end

@@ -61,4 +61,10 @@ describe Package do
       #package.consumers.should eq ([])
     end
   end
+
+  it "name is the description" do
+    package = FactoryGirl.build(:package)
+    package.name.should eq package.description
+  end
+
 end
