@@ -46,7 +46,55 @@ ProviderStore::Application.routes.draw do
 
   resources :supplies
 
+  namespace :rest do
+    resources :provider_types, :only => [:index, :show]
+
+    resources :fetchers, :only => [:index, :show] do
+      resources :providers, :only => [:index, :show]
+    end
+
+    resources :deliver_periods, :only => [:index, :show]
+
+    resources :retains, :only => [:index, :show]
+
+    resources :transports, :only => [:index, :show]
+
+    resources :statuses, :only => [:index, :show]
+
+    resources :ipaddresses, :only => [:index, :show]
+
+    resources :packages, :only => [:index, :show] do
+      resources :consumers, :only => [:index, :show]
+      resources :consumers_packages, :only => [:index, :show]
+    end
+
+    resources :consumers_providers, :only => [:index, :show]
+
+    resources :consumers_packages, :only => [:index, :show]
+
+    resources :fulltexts, :only => [:index, :show]
+
+    resources :consumers, :only => [:index, :show] do
+      resources :providers, :only => [:index, :show]
+      resources :packages, :only => [:index, :show]
+      resources :consumers_providers, :only => [:index, :show]
+      resources :consumers_packages, :only => [:index, :show]
+    end
+
+    resources :providers, :only => [:index, :show] do
+      resources :consumers, :only => [:index, :show]
+      resources :fetchers, :only => [:index, :show]
+      resources :packages, :only => [:index, :show]
+      resources :consumers_providers, :only => [:index, :show]
+    end
+
+    resources :supplies, :only => [:index, :show]
+
+    resources :users, :only => [:index, :show]
+  end
+
   match 'providercode/:code' => 'providers#code'
+  match 'rest/providercode/:code' => 'rest/providers#code'
 
   root :to => "home#index"
 
