@@ -38,7 +38,7 @@ ActiveAdmin.register Provider do
       end
     end
 
-    f.buttons
+    f.actions
   end
 
 end
