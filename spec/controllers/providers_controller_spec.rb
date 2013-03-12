@@ -45,8 +45,8 @@ describe ProvidersController do
   end
 
   describe "GET providercode#code" do
-    provider = FactoryGirl.create(:provider)
     it "shows the show template for code lookup" do
+      provider = FactoryGirl.create(:provider)
       get :code, code: provider.code
       response.should render_template :show
     end
