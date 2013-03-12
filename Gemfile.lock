@@ -202,8 +202,6 @@ GEM
       sexp_processor (~> 4.1)
     rubycas-client (2.3.9)
       activesupport
-    rvm-capistrano (1.2.7)
-      capistrano (>= 2.0.0)
     sass (3.2.5)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -258,7 +256,6 @@ DEPENDENCIES
   rails_best_practices
   railties
   rspec-rails
-  rvm-capistrano
   sass-rails (~> 3.2.3)
   simplecov
   simplecov-html
