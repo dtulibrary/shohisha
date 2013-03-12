@@ -11,7 +11,7 @@ class CreateFetchers < ActiveRecord::Migration
       t.string :directory
       t.string :seperator
       t.string :file_filter
-      t.string :directory_filter
+      t.string :directory_filter, :limit => 1024
       t.string :format
       t.string :set
       t.string :set_limit
