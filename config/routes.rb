@@ -8,6 +8,7 @@ ProviderStore::Application.routes.draw do
 
     resources :fetchers, :only => [:index, :show] do
       resources :providers, :only => [:index, :show]
+      resources :supplies, :only => [:index, :show]
     end
 
     resources :deliver_periods, :only => [:index, :show]
@@ -45,7 +46,9 @@ ProviderStore::Application.routes.draw do
       resources :consumers_providers, :only => [:index, :show]
     end
 
-    resources :supplies, :only => [:index, :show]
+    resources :supplies, :only => [:index, :show] do
+      resources :fetchers, :only => [:index, :show]
+    end
 
     resources :users, :only => [:index, :show]
   end

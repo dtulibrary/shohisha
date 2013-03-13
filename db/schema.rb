@@ -66,10 +66,10 @@ ActiveRecord::Schema.define(:version => 20130514124259) do
   end
 
   create_table "fetchers", :force => true do |t|
-    t.integer  "provider_id",       :null => false
-    t.integer  "status_id",         :null => false
-    t.integer  "transport_id",      :null => false
-    t.integer  "retain_id",         :null => false
+    t.integer  "provider_id",                      :null => false
+    t.integer  "status_id",                        :null => false
+    t.integer  "transport_id",                     :null => false
+    t.integer  "retain_id",                        :null => false
     t.string   "username"
     t.string   "password"
     t.string   "basename"
@@ -85,15 +85,17 @@ ActiveRecord::Schema.define(:version => 20130514124259) do
     t.boolean  "remote_delete"
     t.boolean  "passive"
     t.integer  "timeout"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.integer  "deliver_period_id"
+    t.integer  "supply_id",         :default => 0, :null => false
   end
 
   add_index "fetchers", ["deliver_period_id"], :name => "index_fetchers_on_deliver_period_id"
   add_index "fetchers", ["provider_id"], :name => "index_fetchers_on_provider_id"
   add_index "fetchers", ["retain_id"], :name => "index_fetchers_on_retain_id"
   add_index "fetchers", ["status_id"], :name => "index_fetchers_on_status_id"
+  add_index "fetchers", ["supply_id"], :name => "index_fetchers_on_supply_id"
   add_index "fetchers", ["transport_id"], :name => "index_fetchers_on_transport_id"
 
   create_table "fulltexts", :force => true do |t|
@@ -136,11 +138,6 @@ ActiveRecord::Schema.define(:version => 20130514124259) do
   end
 
   add_index "providers", ["code"], :name => "index_providers_on_code", :unique => true
-
-  create_table "providers_supplies", :id => false, :force => true do |t|
-    t.integer "provider_id", :null => false
-    t.integer "supply_id",   :null => false
-  end
 
   create_table "retains", :force => true do |t|
     t.string   "code",       :null => false

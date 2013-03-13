@@ -7,6 +7,6 @@ class CreateProvidersSupplies < ActiveRecord::Migration
   end
 
   def down
-    drop table :provider_supplies
+    drop_table :provider_supplies
   end
 end

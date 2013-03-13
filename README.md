@@ -48,7 +48,7 @@ Fetchers are used to get information about how to get data from a provider.
 
 Ipaddresses contain an IP address, IP address range or a IP address/bitmask.
 
-Supplies is used to identify what kind of data the provider supplies.
+Supplies is used to identify what kind of data the fetcher returns.
 
 Statutes is used to give the status for a given fetcher.
 
@@ -63,6 +63,7 @@ For each resource available you can do the follwing requests
     GET /rest/<resource>/<id>.json
 
 The returned format will be JSON.
+Any request not having .json added will return an empty response.
 
 The following special lookup exists.
     GET /rest/providercode/<code>(.json or .text)
@@ -74,6 +75,7 @@ The nested resources can be used to limit what is extracted.
     GET /rest/providers/<id>/consumers_packages.json
     GET /rest/consumers/<id>/consumers_packages.json
     GET /rest/providers/<id>/fetchers.json
+    GET /rest/supplies/<id>/fetchers.json
 
 ipaddresses is intended for storing IP addresses which should be able to access
 some kind of service related to this. E.g. an internal ftp server where data

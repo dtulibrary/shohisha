@@ -5,6 +5,7 @@ ActiveAdmin.register Fetcher do
   filter :transport
   filter :status
   filter :basename
+  filter :supply
   filter :created_at
   filter :updated_at
 
@@ -13,6 +14,7 @@ ActiveAdmin.register Fetcher do
     column :transport
     column :status
     column :basename
+    column :supply
 
     column :created_at
     column :updated_at

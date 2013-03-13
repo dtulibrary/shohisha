@@ -12,6 +12,12 @@ describe Rest::FetchersController do
       response.body.should eq fetcher_list.to_json
     end
 
+    # GET /rest/fetchers.html
+    it "no html view" do
+      get :index
+      response.should_not render_template :index
+    end
+
     # GET /rest/providers/1/fetchers.json
     it "renders through providers" do
       fetcher = FactoryGirl.create(:fetcher)
@@ -25,10 +31,12 @@ describe Rest::FetchersController do
       response.body.should eq [fetcher3].to_json
     end
 
-    # GET /rest/fetchers.html
-    it "no html view" do
-      get :index
-      response.should_not render_template :index
+    # GET /rest/supplies/1/fetchers.json
+    it "renders through supplies" do
+      fetcher = FactoryGirl.create(:fetcher)
+      get :index, supply_id: fetcher.supply, :format => :json
+      response.header['Content-Type'].should include 'application/json'
+      response.body.should eq [fetcher].to_json
     end
   end
 
@@ -36,11 +44,10 @@ describe Rest::FetchersController do
     # GET /rest/fetchers/1.json
     it "assigns and renders @fetcher" do
       fetcher = FactoryGirl.create(:fetcher)
-      get :show, id: fetcher, :format => :json
-      assigns(:fetcher).should eq (fetcher)
+      get :show, id:fetcher, :format => :json
       response.header['Content-Type'].should include 'application/json'
       response.body.should eq fetcher.to_json
     end
   end
-  
+
 end

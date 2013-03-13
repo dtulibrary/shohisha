@@ -3,6 +3,8 @@ class Rest::FetchersController < ApplicationController
   def index
     if params[:provider_id]
       @fetchers = Provider.find(params[:provider_id]).fetchers
+    elsif params[:supply_id]
+      @fetchers = Fetcher.where(:supply_id => params[:supply_id])
     else
       @fetchers = Fetcher.all
     end

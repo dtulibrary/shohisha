@@ -22,6 +22,14 @@ describe Fetcher do
     FactoryGirl.build(:fetcher, retain: nil).should_not be_valid
   end
 
+  it "fails without deliver_period" do
+    fetcher = FactoryGirl.build(:fetcher, deliver_period: nil).should_not be_valid
+  end
+
+  it "fails without supply" do
+    fetcher = FactoryGirl.build(:fetcher, supply: nil).should_not be_valid
+  end
+
   # TODO: How to do this validation
   #it "fails if user without password" do
   #  FactoryGirl.build(:fetcher, user: nil).should_not be_valid
@@ -52,7 +60,6 @@ describe Fetcher do
     end
   end
 
-  # TODO: Recursive should be a numeric value
   describe "recursive" do
     it "fails if recursive isn't numeric" do
       FactoryGirl.build(:fetcher, recursive: "bar").should_not be_valid
@@ -73,7 +80,6 @@ describe Fetcher do
     end
   end
 
-  # TODO: Seperator should be / or \ (unix, dos respectively)
   describe "seperator" do
     it "fails if seperator isn't / or \\" do
       FactoryGirl.build(:fetcher, seperator: "b").should_not be_valid

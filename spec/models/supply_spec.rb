@@ -20,4 +20,11 @@ describe Supply do
     FactoryGirl.build(:supply, code: supply.code).should_not be_valid
   end
 
+  it "restrict delete with fetcher" do
+    fetcher = FactoryGirl.create(:fetcher)
+    assert_raise ActiveRecord::DeleteRestrictionError do
+      fetcher.supply.destroy
+    end
+  end
+
 end

@@ -5,6 +5,7 @@ FactoryGirl.define do
     f.association :transport
     f.association :retain
     f.association :deliver_period
+    f.association :supply
 
     f.sequence(:basename) { |n| "http://example#{n}.com/fetch" }
     f.charset "utf-8"
