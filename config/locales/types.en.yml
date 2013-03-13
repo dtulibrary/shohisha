@@ -2,14 +2,23 @@ en:
   shohisha:
     code:
       provider_type:
-        'aggregator': 'Aggregator company'
-        'publisher': 'Publisher company'
+        'aggregator': 'Aggregator'
+        'publisher': 'Publisher'
+        'database': 'Database'
+        'research': 'Research Institution'
+        'openaccess': 'Open Access'
+        'other': 'Other'
+        'coverimage': 'Cover Images'
       transport:
         'Data::Fetcher::FTP': 'FTP Transport'
+        'Data::Fetcher::FTPS': 'FTP Secure Transport (FTPS)'
         'Data::Fetcher::FS': 'File system'
+        'Data::Fetcher::FS::Mail': 'Mail (File system)'
+        'Data::Fetcher::FS::Cat': 'File system concat'
+        'Data::Fetcher::HTTP': 'HTTP single file'
         'DS2::Fetcher::OAI': 'OAI-PMH'
-        'Data::Fetcher::FS::MAIL': 'Mail (File system)'
-        'Data::Fetcher::FS::CAT': 'File system concat'
+        'DS2::Fetcher::Sorbit': 'Sorbit'
+        'DS2::Fetcher::Entrez': 'Entrez (PubMed)'
       status:
         'test':  'Testing'
         'prod':  'Production'
@@ -17,6 +26,8 @@ en:
         'off':   'Inactive'
       retain:
         'full_single': 'Full delivery everytime'
+        'incremental': 'Incremental delivery'
+        'baseline': 'Baseline delivery'
       supply:
         'article': 'Article Metadata'
         'ebook': 'Ebook Metadata'
