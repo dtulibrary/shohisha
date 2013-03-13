@@ -26,4 +26,12 @@ en:
       fulltext:
         'none': 'No handling'
         'sfx': 'Handle through SFX'
+      deliver_period:
+        'day': 'Daily'
+        'week': 'Weekly'
+        'month': 'Monthly'
+        'bimoth': 'Bimonthly'
+        'quarter': 'Quarterly'
+        'halfyear': 'Every 6 months'
+        'year': 'Yearly'
 

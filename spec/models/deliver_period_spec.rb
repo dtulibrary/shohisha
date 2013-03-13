@@ -7,11 +7,15 @@ describe DeliverPeriod do
   end
 
   it "fails without code" do
-    consumer = FactoryGirl.build(:deliver_period, code: nil).should_not be_valid
+    FactoryGirl.build(:deliver_period, code: nil).should_not be_valid
   end
 
   it "fails without description" do
-    consumer = FactoryGirl.build(:deliver_period, description: nil).should_not be_valid
+    FactoryGirl.build(:deliver_period, description: nil).should_not be_valid
   end
 
+  it "returns untranslated name" do
+    period = FactoryGirl.build(:deliver_period)
+    period.name.should eq "translation missing: en.shohisha.code.deliver_period."+period.code
+  end
 end
