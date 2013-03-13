@@ -1,6 +1,0 @@
-<p class="field">
-  <%= f.collection_select(:provider_id, Provider.find(:all), :id, :description) %>
-  <%= f.collection_select(:fulltext_id, Fulltext.find(:all), :id, :description) %>
-      
-  <%= link_to_remove_fields "remove", f %>
-</p>

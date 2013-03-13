@@ -3,49 +3,6 @@ ProviderStore::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  resources :provider_types
-
-  resources :fetchers do
-    resources :providers
-  end
-
-  resources :deliver_periods
-
-  resources :retains
-
-  resources :transports
-
-  resources :statuses
-
-  resources :ipaddresses
-
-  resources :packages do
-    resources :consumers
-    resources :consumers_packages, :only => [:index, :show]
-  end
-
-  resources :consumers_providers, :only => [:index, :show]
-
-  resources :consumers_packages, :only => [:index, :show]
-
-  resources :fulltexts
-
-  resources :consumers do
-    resources :providers
-    resources :packages
-    resources :consumers_providers, :only => [:index, :show]
-    resources :consumers_packages, :only => [:index, :show]
-  end
-
-  resources :providers do
-    resources :consumers
-    resources :fetchers
-    resources :packages
-    resources :consumers_providers, :only => [:index, :show]
-  end
-
-  resources :supplies
-
   namespace :rest do
     resources :provider_types, :only => [:index, :show]
 
@@ -93,7 +50,6 @@ ProviderStore::Application.routes.draw do
     resources :users, :only => [:index, :show]
   end
 
-  match 'providercode/:code' => 'providers#code'
   match 'rest/providercode/:code' => 'rest/providers#code'
 
   root :to => "home#index"
