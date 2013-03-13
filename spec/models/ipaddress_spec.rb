@@ -7,11 +7,11 @@ describe Ipaddress do
   end
 
   it "fails without provider" do
-    ipaddress = FactoryGirl.build(:ipaddress, provider: nil).should_not be_valid
+    FactoryGirl.build(:ipaddress, provider: nil).should_not be_valid
   end
 
   it "fails without address" do
-    ipaddress = FactoryGirl.build(:ipaddress, address: nil).should_not be_valid
+    FactoryGirl.build(:ipaddress, address: nil).should_not be_valid
   end
 
 end

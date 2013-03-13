@@ -18,4 +18,5 @@ describe DeliverPeriod do
     period = FactoryGirl.build(:deliver_period)
     period.name.should eq "translation missing: en.shohisha.code.deliver_period."+period.code
   end
+
 end

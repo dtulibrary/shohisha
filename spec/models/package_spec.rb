@@ -7,15 +7,15 @@ describe Package do
   end
 
   it "fails without code" do
-    package = FactoryGirl.build(:package, code: nil).should_not be_valid
+    FactoryGirl.build(:package, code: nil).should_not be_valid
   end
 
   it "fails without description" do
-    package = FactoryGirl.build(:package, description: nil).should_not be_valid
+    FactoryGirl.build(:package, description: nil).should_not be_valid
   end
 
   it "fails without provider" do
-    package = FactoryGirl.build(:package, provider: nil).should_not be_valid
+    FactoryGirl.build(:package, provider: nil).should_not be_valid
   end
 
   describe "Package test nested attributes" do

@@ -7,11 +7,11 @@ describe Fulltext do
   end
 
   it "fails without code" do
-    fulltext = FactoryGirl.build(:fulltext, code: nil).should_not be_valid
+    FactoryGirl.build(:fulltext, code: nil).should_not be_valid
   end
 
   it "fails without description" do
-    fulltext = FactoryGirl.build(:fulltext, description: nil).should_not be_valid
+    FactoryGirl.build(:fulltext, description: nil).should_not be_valid
   end
 
   it "returns untranslated name" do

@@ -7,11 +7,11 @@ describe Status do
   end
 
   it "fails without code" do
-    status = FactoryGirl.build(:status, code: nil).should_not be_valid
+    FactoryGirl.build(:status, code: nil).should_not be_valid
   end
 
   it "fails without description" do
-    status = FactoryGirl.build(:status, description: nil).should_not be_valid
+    FactoryGirl.build(:status, description: nil).should_not be_valid
   end
 
   it "returns untranslated name" do

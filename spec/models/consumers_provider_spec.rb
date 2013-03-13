@@ -7,14 +7,15 @@ describe ConsumersProvider do
   end
 
   it "fails without consumer" do
-    cp = FactoryGirl.build(:consumers_provider, consumer: nil).should_not be_valid
+    FactoryGirl.build(:consumers_provider, consumer: nil).should_not be_valid
   end
 
   it "fails without provider" do
-    cp = FactoryGirl.build(:consumers_provider, provider: nil).should_not be_valid
+    FactoryGirl.build(:consumers_provider, provider: nil).should_not be_valid
   end
 
   it "fails without fulltext" do
-    cp = FactoryGirl.build(:consumers_provider, fulltext: nil).should_not be_valid
+    FactoryGirl.build(:consumers_provider, fulltext: nil).should_not be_valid
   end
+
 end

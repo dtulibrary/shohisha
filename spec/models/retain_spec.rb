@@ -7,11 +7,11 @@ describe Retain do
   end
 
   it "fails without code" do
-    retain = FactoryGirl.build(:retain, code: nil).should_not be_valid
+    FactoryGirl.build(:retain, code: nil).should_not be_valid
   end
 
   it "fails without description" do
-    retain = FactoryGirl.build(:retain, description: nil).should_not be_valid
+    FactoryGirl.build(:retain, description: nil).should_not be_valid
   end
 
   it "returns untranslated name" do

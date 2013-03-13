@@ -7,14 +7,15 @@ describe ConsumersPackage do
   end
 
   it "fails without consumer" do
-    cp = FactoryGirl.build(:consumers_package, consumer: nil).should_not be_valid
+    FactoryGirl.build(:consumers_package, consumer: nil).should_not be_valid
   end
 
   it "fails without package" do
-    cp = FactoryGirl.build(:consumers_package, package: nil).should_not be_valid
+    FactoryGirl.build(:consumers_package, package: nil).should_not be_valid
   end
 
   it "fails without fulltext" do
-    cp = FactoryGirl.build(:consumers_package, fulltext: nil).should_not be_valid
+    FactoryGirl.build(:consumers_package, fulltext: nil).should_not be_valid
   end
+
 end

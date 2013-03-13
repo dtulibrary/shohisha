@@ -7,11 +7,11 @@ describe Consumer do
   end
 
   it "fails without code" do
-    consumer = FactoryGirl.build(:consumer, code: nil).should_not be_valid
+    FactoryGirl.build(:consumer, code: nil).should_not be_valid
   end
 
   it "fails without description" do
-    consumer = FactoryGirl.build(:consumer, description: nil).should_not be_valid
+    FactoryGirl.build(:consumer, description: nil).should_not be_valid
   end
 
   it "name is the description" do

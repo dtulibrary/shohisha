@@ -7,11 +7,11 @@ describe ProviderType do
   end
 
   it "fails without code" do
-    type = FactoryGirl.build(:provider_type, code: nil).should_not be_valid
+    FactoryGirl.build(:provider_type, code: nil).should_not be_valid
   end
 
   it "fails without description" do
-    type = FactoryGirl.build(:provider_type, description: nil).should_not be_valid
+    FactoryGirl.build(:provider_type, description: nil).should_not be_valid
   end
 
   it "returns untranslated name" do

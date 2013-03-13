@@ -6,7 +6,7 @@ describe User do
   end
 
   it "fails without username" do
-    @provider = FactoryGirl.build(:user, username: nil).should_not be_valid
+    FactoryGirl.build(:user, username: nil).should_not be_valid
   end
 
 end
