@@ -19,4 +19,9 @@ describe Status do
     status.name.should eq "translation missing: en.shohisha.code.status."+status.code
   end
 
+  it "code is unique" do
+    status = FactoryGirl.create(:status)
+    FactoryGirl.build(:status, code: status.code).should_not be_valid
+  end
+
 end

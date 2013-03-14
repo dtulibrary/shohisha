@@ -4,36 +4,60 @@ describe Rest::ConsumersController do
   render_views
 
   describe "GET #index" do
-    it "renders the :index view" do
+    # GET /rest/consumers.json
+    it "renders view" do
       consumer_list = FactoryGirl.create_list(:consumer, 3)
       get :index, :format => :json
       response.header['Content-Type'].should include 'application/json'
       response.body.should eq consumer_list.to_json
     end
 
-    it "renders package index view" do
+    # GET /rest/packages/1/consumers.json
+    it "renders through packages" do
       consumer = FactoryGirl.create(:consumer)
+      consumer2 = FactoryGirl.create(:consumer)
+      consumer3 = FactoryGirl.create(:consumer)
+      consumer4 = FactoryGirl.create(:consumer)
       fulltext = FactoryGirl.create(:fulltext)
       package = FactoryGirl.create(:package)
-      consumer2 = FactoryGirl.create(:consumer)
+      package2 = FactoryGirl.create(:package)
       package.consumers_packages = [
         ConsumersPackage.new(
           { consumer_id: consumer.id, fulltext_id: fulltext.id }
         ),
         ConsumersPackage.new(
           { consumer_id: consumer2.id, fulltext_id: fulltext.id }
+        ),
+        ConsumersPackage.new(
+          { consumer_id: consumer3.id, fulltext_id: fulltext.id }
         )
       ]
-      get :index, id: consumer.id, package_id: package.id, :format => :json
+      package2.consumers_packages = [
+        ConsumersPackage.new(
+          { consumer_id: consumer3.id, fulltext_id: fulltext.id }
+        ),
+        ConsumersPackage.new(
+          { consumer_id: consumer4.id, fulltext_id: fulltext.id }
+        )
+      ]
+      get :index, package_id: package, :format => :json
       response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [consumer, consumer2].to_json
+      response.body.should eq [consumer, consumer2, consumer3].to_json
+      get :index, package_id: package2, :format => :json
+      response.header['Content-Type'].should include 'application/json'
+      response.body.should eq [consumer3, consumer4].to_json
     end
 
-    it "renders provider index view" do
+    # GET /rest/providers/1/consumers.json
+    # GET /rest/providers/2/consumers.json
+    it "renders through providers" do
       consumer = FactoryGirl.create(:consumer)
+      consumer2 = FactoryGirl.create(:consumer)
+      consumer3 = FactoryGirl.create(:consumer)
+      consumer4 = FactoryGirl.create(:consumer)
       fulltext = FactoryGirl.create(:fulltext)
       provider = FactoryGirl.create(:provider)
-      consumer2 = FactoryGirl.create(:consumer)
+      provider2 = FactoryGirl.create(:provider)
       provider.consumers_providers = [
         ConsumersProvider.new(
           { consumer_id: consumer.id, fulltext_id: fulltext.id }
@@ -41,16 +65,36 @@ describe Rest::ConsumersController do
         ConsumersProvider.new(
           { consumer_id: consumer2.id, fulltext_id: fulltext.id }
         ),
+        ConsumersProvider.new(
+          { consumer_id: consumer3.id, fulltext_id: fulltext.id }
+        ),
       ]
-      get :index, id: consumer.id, provider_id: provider.id, :format => :json
+      provider2.consumers_providers = [
+        ConsumersProvider.new(
+          { consumer_id: consumer3.id, fulltext_id: fulltext.id }
+        ),
+        ConsumersProvider.new(
+          { consumer_id: consumer4.id, fulltext_id: fulltext.id }
+        ),
+      ]
+      get :index, provider_id: provider, :format => :json
       response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [consumer, consumer2].to_json
+      response.body.should eq [consumer, consumer2, consumer3].to_json
+      get :index, provider_id: provider2, :format => :json
+      response.header['Content-Type'].should include 'application/json'
+      response.body.should eq [consumer3, consumer4].to_json
     end
 
+    # GET /rest/consumers.html
+    it "no html view" do
+      get :index
+      response.should_not render_template :index
+    end
   end
 
   describe "GET #show" do
-    it "assigns the requested consumer to @consumer" do
+    # GET /rest/consumers/1.json
+    it "assigns and renders @consumer" do
       consumer = FactoryGirl.create(:consumer)
       get :show, id: consumer, :format => :json
       assigns(:consumer).should eq (consumer)

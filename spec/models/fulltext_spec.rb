@@ -19,4 +19,9 @@ describe Fulltext do
     fulltext.name.should eq "translation missing: en.shohisha.code.fulltext."+fulltext.code
   end
 
+  it "code is unique" do
+    fulltext = FactoryGirl.create(:fulltext)
+    FactoryGirl.build(:fulltext, code: fulltext.code).should_not be_valid
+  end
+
 end

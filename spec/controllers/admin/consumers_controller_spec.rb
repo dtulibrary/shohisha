@@ -19,7 +19,6 @@ describe Admin::ConsumersController do
       get :index
       response.status.should be(200)
       response.should render_template :index
-      consumer.destroy
     end
   end
 
@@ -29,7 +28,6 @@ describe Admin::ConsumersController do
       get :show, id: consumer
       response.status.should be(200)
       response.should render_template :show
-      consumer.destroy
     end
   end
 
@@ -47,7 +45,6 @@ describe Admin::ConsumersController do
       get :edit, id: consumer
       response.status.should be(200)
       response.should render_template :edit
-      consumer.destroy
     end
   end
 

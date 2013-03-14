@@ -4,30 +4,43 @@ describe Rest::FetchersController do
   render_views
 
   describe "GET #index" do
-    it "renders the :index view" do
+    # GET /rest/fetchers.json
+    it "renders view" do
       fetcher_list = FactoryGirl.create_list(:fetcher, 3)
       get :index, :format => :json
       response.header['Content-Type'].should include 'application/json'
       response.body.should eq fetcher_list.to_json
     end
+
+    # GET /rest/providers/1/fetchers.json
+    it "renders through providers" do
+      fetcher = FactoryGirl.create(:fetcher)
+      fetcher2 = FactoryGirl.create(:fetcher, provider_id: fetcher.provider.id)
+      fetcher3 = FactoryGirl.create(:fetcher)
+      get :index, provider_id: fetcher.provider.id, :format => :json
+      response.header['Content-Type'].should include 'application/json'
+      response.body.should eq [fetcher, fetcher2].to_json
+      get :index, provider_id: fetcher3.provider.id, :format => :json
+      response.header['Content-Type'].should include 'application/json'
+      response.body.should eq [fetcher3].to_json
+    end
+
+    # GET /rest/fetchers.html
+    it "no html view" do
+      get :index
+      response.should_not render_template :index
+    end
   end
 
   describe "GET #show" do
-    it "assigns the requested fetcher to @fetcher" do
+    # GET /rest/fetchers/1.json
+    it "assigns and renders @fetcher" do
       fetcher = FactoryGirl.create(:fetcher)
       get :show, id: fetcher, :format => :json
       assigns(:fetcher).should eq (fetcher)
       response.header['Content-Type'].should include 'application/json'
       response.body.should eq fetcher.to_json
     end
-
-    it "gets provider for fetcher" do
-      fetcher = FactoryGirl.create(:fetcher)
-      get :index, id: fetcher.id, provider_id: fetcher.provider.id, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [fetcher].to_json
-    end
-
   end
   
 end

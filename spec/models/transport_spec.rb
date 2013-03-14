@@ -19,4 +19,9 @@ describe Transport do
     transport.name.should eq "translation missing: en.shohisha.code.transport."+transport.code
   end
 
+  it "code is unique" do
+    transport = FactoryGirl.create(:transport)
+    FactoryGirl.build(:transport, code: transport.code).should_not be_valid
+  end
+
 end

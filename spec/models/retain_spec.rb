@@ -19,4 +19,9 @@ describe Retain do
     retain.name.should eq "translation missing: en.shohisha.code.retain."+retain.code
   end
 
+  it "code is unique" do
+    retain = FactoryGirl.create(:retain)
+    FactoryGirl.build(:retain, code: retain.code).should_not be_valid
+  end
+
 end

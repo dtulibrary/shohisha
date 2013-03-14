@@ -19,7 +19,6 @@ describe Admin::FetchersController do
       get :index
       response.status.should be(200)
       response.should render_template :index
-      fetcher.destroy
     end
   end
 
@@ -29,7 +28,6 @@ describe Admin::FetchersController do
       get :show, id: fetcher
       response.status.should be(200)
       response.should render_template :show
-      fetcher.destroy
     end
   end
 
@@ -47,7 +45,6 @@ describe Admin::FetchersController do
       get :edit, id: fetcher
       response.status.should be(200)
       response.should render_template :edit
-      fetcher.destroy
     end
   end
 

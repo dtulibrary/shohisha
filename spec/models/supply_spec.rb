@@ -23,4 +23,9 @@ describe Supply do
     supply.name.should eq "translation missing: en.shohisha.code.supply."+supply.code
   end
 
+  it "code is unique" do
+    supply = FactoryGirl.create(:supply)
+    FactoryGirl.build(:supply, code: supply.code).should_not be_valid
+  end
+
 end

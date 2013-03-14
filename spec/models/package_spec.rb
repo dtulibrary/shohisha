@@ -67,6 +67,11 @@ describe Package do
     package.name.should eq package.description
   end
 
+  it "code is unique" do
+    package = FactoryGirl.create(:package)
+    FactoryGirl.build(:package, code: package.code).should_not be_valid
+  end
+
   it "restrict delete with package" do
     consumer = FactoryGirl.create(:consumer)
     package = FactoryGirl.create(:package)

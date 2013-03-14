@@ -1,7 +1,7 @@
 require 'spec_helper'
 include Devise::TestHelpers
 
-describe Admin::TransportsController do
+describe Admin::DeliverPeriodsController do
   render_views
 
   before(:each) do
@@ -15,7 +15,7 @@ describe Admin::TransportsController do
 
   describe "GET #index" do
     it "renders the :index view" do
-      transport = FactoryGirl.create(:transport)
+      FactoryGirl.create(:deliver_period)
       get :index
       response.status.should be(200)
       response.should render_template :index
@@ -24,7 +24,7 @@ describe Admin::TransportsController do
 
   describe "GET #show" do
     it "renders the #show view" do
-      get :show, id: FactoryGirl.create(:transport)
+      get :show, id: FactoryGirl.create(:deliver_period)
       response.status.should be(200)
       response.should render_template :show
     end
@@ -40,7 +40,7 @@ describe Admin::TransportsController do
 
   describe "GET #edit" do
     it "shows the edit template" do
-      get :edit, id: FactoryGirl.create(:transport)
+      get :edit, id: FactoryGirl.create(:deliver_period)
       response.status.should be(200)
       response.should render_template :edit
     end

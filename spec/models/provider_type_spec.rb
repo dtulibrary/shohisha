@@ -19,4 +19,9 @@ describe ProviderType do
     type.name.should eq "translation missing: en.shohisha.code.provider_type."+type.code
   end
 
+  it "code is unique" do
+    provider_type = FactoryGirl.create(:provider_type)
+    FactoryGirl.build(:provider_type, code: provider_type.code).should_not be_valid
+  end
+
 end

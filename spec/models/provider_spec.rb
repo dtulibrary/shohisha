@@ -23,6 +23,11 @@ describe Provider do
     provider.name.should eq provider.description
   end
 
+  it "code is unique" do
+    provider = FactoryGirl.create(:provider)
+    FactoryGirl.build(:provider, code: provider.code).should_not be_valid
+  end
+
   it "restrict delete with consumer" do
     consumer = FactoryGirl.create(:consumer)
     provider = FactoryGirl.create(:provider)
