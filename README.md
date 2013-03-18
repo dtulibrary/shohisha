@@ -1,15 +1,15 @@
 shohisha
 ========
 
-Provider-Consumer metadata and access control
+Provider-Consumer metadata and access control.
 
 This ruby project creates a concept of providers which deliver some sort of
-data.  And consumers which are granted access to this data.
+data. And consumers which are granted access to this data.
 
 Resource structure
 ------------------
 
-The following resources are available
+The following models are available
     providers
     consumers
     packages
@@ -33,7 +33,6 @@ following resources have a provider_id in them.
 
 Providers references the following structures
     provider_types
-    supplies
 
 There is a link between consumer and provider, and between consumer
 and packages.
@@ -60,40 +59,35 @@ REST interface
 Data can be extracted through a REST based interface.
 
 For each resource available you can do the follwing requests
-    GET /<resource>
-    GET /<resource>/<id>
-    PUT /<resource>
-    POST /<resource>/<id>
-    DELETE /<resource>/<id>
+    GET /rest/<resource>.json
+    GET /rest/<resource>/<id>.json
 
-The returned format will default be HTML. But by adding .json you can get
-a json struct returned instead.
+The returned format will be JSON.
 
-The following special REST apis exists.
-    GET /ipaddresses.json
-    GET providercode/<code>(.json or .text)
-    GET /providers/<id>/consumers_providers.json
-    GET /consumers/<id>/consumers_providers.json
-    GET /providers/<id>/consumers_packages.json
-    GET /consumers/<id>/consumers_packages.json
+The following special lookup exists.
+    GET /rest/providercode/<code>(.json or .text)
+.text will return the id only as plain/text.
 
-ipaddresses will return a list of all registered IP addresses which should
-have access to our ftp server.
+The nested resources can be used to limit what is extracted.
+    GET /rest/providers/<id>/consumers_providers.json
+    GET /rest/consumers/<id>/consumers_providers.json
+    GET /rest/providers/<id>/consumers_packages.json
+    GET /rest/consumers/<id>/consumers_packages.json
+    GET /rest/providers/<id>/fetchers.json
 
-providercode can return the number of a provider based on the code.
-If you request text format, only the ID number is returned.
+ipaddresses is intended for storing IP addresses which should be able to access
+some kind of service related to this. E.g. an internal ftp server where data
+is dropped of by providers.
 
 consumers_providers and consumers_packages will return information about
 links between consumer - provider and consumer - packages respectivily
-These can only be used with json format.
-
 
 How to use the REST interface
 -----------------------------
 
 To get a list of providers do:
 
-    GET /providers.json
+    GET /rest/providers.json
 
 This will return an array of providers in the JSON format.
 This could look like this:
@@ -127,18 +121,18 @@ You can find the reference name by removing "_id" and add "s" to the name.
 If the name ends in a "s" you must add "es".
 
 So in the returned provider data you can lookup the provider type by doing
-  GET /provider_types/<value>
+  GET /rest/provider_types/<value>
 
 If you find you need to do a lot of lookup on the type. You can also get the
 full list of provider_types by doing
-  GET /provider_types
+  GET /rest/provider_types
 And then do the mapping yourself.
 
 You can lookup a single provider by doing:
-  GET /provider/<id>.json
+  GET /rest/providers/<id>.json
 
 E.g.
-  GET /providers/1.json
+  GET /rest/providers/1.json
 
 could return:
 {
@@ -154,7 +148,7 @@ For a single provider yuo can also get a list of attached consumers, packages
 and fetchers.
 
 E.g. to get all consumers for a given provider:
-    GET /providers/1/consumers.json
+    GET /rest/providers/1/consumers.json
 
 Which return an array of consumers linked to the given provider.
 Like this:
@@ -174,7 +168,7 @@ Like this:
 ]
 
 Getting provider packages or consumer packages works the same way
-    GET /providers/2/packages.json
+    GET /rest/providers/2/packages.json
 
 Which would return something like this:
 [
@@ -196,7 +190,7 @@ Which would return something like this:
 
 Or if no packages are available (needed) it will return [].
 
-    GET /consumers/1/packages.json
+    GET /rest/consumers/1/packages.json
 
 Would return all packages for all providers like this:
 [
@@ -219,7 +213,7 @@ Would return all packages for all providers like this:
 
 To get the actual information about a link between consumer and provider
 you use:
-    GET /consumers/1/consumers_providers.json
+    GET /rest/consumers/1/consumers_providers.json
 
 That will get all links from consumer 1 to a provider.
 It looks like this:
@@ -234,8 +228,16 @@ It looks like this:
 ]
 
 That same is possible for packages
-    GET /consumers/1/consumers_packages.json
+    GET /rest/consumers/1/consumers_packages.json
 
 Or from the provider perspective
-    GET /providers/1/consumers_providers.json
-    GET /providers/1/consumers_packages.json
+    GET /rest/providers/1/consumers_providers.json
+    GET /rest/providers/1/consumers_packages.json
+
+To get all fetchers do
+    GET /rest/fetchers.json
+
+Or to get all fetchers for a given provider.
+    GET /rest/providers/1/fetchers.json
+
+
