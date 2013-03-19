@@ -1,6 +1,7 @@
 ActiveAdmin.register Fetcher do
   menu :priority => 4
 
+  filter :provider
   filter :transport
   filter :status
   filter :basename
@@ -8,6 +9,7 @@ ActiveAdmin.register Fetcher do
   filter :updated_at
 
   index do
+    column :provider
     column :transport
     column :status
     column :basename
