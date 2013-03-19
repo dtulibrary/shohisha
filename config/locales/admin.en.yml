@@ -5,6 +5,7 @@ en:
         'details': 'Provider Details'
         'consumers': 'Consumers'
         'supplies': 'Supplies'
+        'fetchers': 'Fetchers'
       consuner:
         'details': 'Consumer Details'
         'providers': 'Providers'

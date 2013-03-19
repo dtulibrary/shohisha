@@ -41,4 +41,9 @@ ActiveAdmin.register Provider do
     f.actions
   end
 
+  action_item :only => :show do
+    link_to I18n.t('shohisha.admin.provider.fetchers'),
+      :controller => "fetchers", :action => "index", 
+      'q[provider_id_eq]' => provider.id
+  end
 end
