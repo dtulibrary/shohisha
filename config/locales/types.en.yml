@@ -36,12 +36,13 @@ en:
         'cover': 'Cover images'
       fulltext:
         'none': 'No handling'
+        'default': 'Default handling'
         'sfx': 'Handle through SFX'
       deliver_period:
         'day': 'Daily'
         'week': 'Weekly'
         'month': 'Monthly'
-        'bimoth': 'Bimonthly'
+        'bimonth': 'Bimonthly'
         'quarter': 'Quarterly'
         'halfyear': 'Every 6 months'
         'year': 'Yearly'
