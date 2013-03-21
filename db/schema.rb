@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130214135717) do
+ActiveRecord::Schema.define(:version => 20130514124259) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -60,10 +60,9 @@ ActiveRecord::Schema.define(:version => 20130214135717) do
   add_index "consumers_providers", ["provider_id"], :name => "index_consumers_providers_on_provider_id"
 
   create_table "deliver_periods", :force => true do |t|
-    t.string   "code",        :null => false
-    t.string   "description", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "code",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "fetchers", :force => true do |t|
@@ -91,16 +90,16 @@ ActiveRecord::Schema.define(:version => 20130214135717) do
     t.integer  "deliver_period_id"
   end
 
+  add_index "fetchers", ["deliver_period_id"], :name => "index_fetchers_on_deliver_period_id"
   add_index "fetchers", ["provider_id"], :name => "index_fetchers_on_provider_id"
   add_index "fetchers", ["retain_id"], :name => "index_fetchers_on_retain_id"
   add_index "fetchers", ["status_id"], :name => "index_fetchers_on_status_id"
   add_index "fetchers", ["transport_id"], :name => "index_fetchers_on_transport_id"
 
   create_table "fulltexts", :force => true do |t|
-    t.string   "code",        :null => false
-    t.text     "description", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "code",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ipaddresses", :force => true do |t|
@@ -124,9 +123,8 @@ ActiveRecord::Schema.define(:version => 20130214135717) do
 
   create_table "provider_types", :force => true do |t|
     t.string   "code"
-    t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "providers", :force => true do |t|
@@ -145,10 +143,9 @@ ActiveRecord::Schema.define(:version => 20130214135717) do
   end
 
   create_table "retains", :force => true do |t|
-    t.string   "code",        :null => false
-    t.string   "description", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "code",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "sessions", :force => true do |t|
@@ -162,22 +159,19 @@ ActiveRecord::Schema.define(:version => 20130214135717) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "statuses", :force => true do |t|
-    t.string   "code",        :null => false
-    t.string   "description", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "code",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "supplies", :force => true do |t|
-    t.string   "code",        :limit => 10, :null => false
-    t.text     "description",               :null => false
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.string   "code",       :limit => 10, :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "transports", :force => true do |t|
     t.string   "code",                                    :null => false
-    t.string   "description",                             :null => false
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
     t.boolean  "uses_basename",         :default => true, :null => false

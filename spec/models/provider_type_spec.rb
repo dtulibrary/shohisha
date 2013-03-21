@@ -10,10 +10,6 @@ describe ProviderType do
     FactoryGirl.build(:provider_type, code: nil).should_not be_valid
   end
 
-  it "fails without description" do
-    FactoryGirl.build(:provider_type, description: nil).should_not be_valid
-  end
-
   it "returns untranslated name" do
     type = FactoryGirl.build(:provider_type)
     type.name.should eq "translation missing: en.shohisha.code.provider_type."+type.code

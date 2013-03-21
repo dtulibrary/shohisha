@@ -1,8 +1,7 @@
 class ProviderType < ActiveRecord::Base
-  attr_accessible :code, :description
+  attr_accessible :code
 
   validates :code, :presence => true, :uniqueness => true
-  validates :description, :presence => true
 
   def name
     I18n.t code, :scope => 'shohisha.code.provider_type'

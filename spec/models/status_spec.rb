@@ -10,10 +10,6 @@ describe Status do
     FactoryGirl.build(:status, code: nil).should_not be_valid
   end
 
-  it "fails without description" do
-    FactoryGirl.build(:status, description: nil).should_not be_valid
-  end
-
   it "returns untranslated name" do
     status = FactoryGirl.build(:status)
     status.name.should eq "translation missing: en.shohisha.code.status."+status.code
