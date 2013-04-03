@@ -67,4 +67,19 @@ describe Package do
     package.name.should eq package.description
   end
 
+  it "restrict delete with package" do
+    consumer = FactoryGirl.create(:consumer)
+    package = FactoryGirl.create(:package)
+    fulltext = FactoryGirl.create(:fulltext)
+    consumer_package = ConsumersPackage.new(
+      { package_id: package.id, consumer_id: consumer.id,
+        fulltext_id: fulltext.id
+      }
+    )
+    consumer.consumers_packages = [consumer_package]
+    assert_raise ActiveRecord::DeleteRestrictionError do
+      package.destroy
+    end
+  end
+
 end
