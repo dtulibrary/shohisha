@@ -12,6 +12,8 @@ class Consumer < ActiveRecord::Base
   validates :code,  :presence => true, :uniqueness => true
   validates :description, :presence => true
 
+  scope :recent, :limit => 10, :order => 'created_at DESC'
+
   def name
     "#{description}"
   end

@@ -20,4 +20,7 @@ class Fetcher < ActiveRecord::Base
   validates :timeout, :numericality => { :only_interger => true}, :allow_blank => true
   validates :charset, :inclusion => { :in => ['utf-8', 'iso-8859-1'] }, :allow_blank => true
   validates :seperator, :format => { :with => /[\/\\]/, :message => "Only / or \\ allowed" }, :allow_blank => true
+
+  scope :recent, :limit => 10, :order => 'created_at DESC'
+
 end

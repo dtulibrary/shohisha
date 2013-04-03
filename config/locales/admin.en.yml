@@ -6,7 +6,11 @@ en:
         'consumers': 'Consumers'
         'supplies': 'Supplies'
         'fetchers': 'Fetchers'
-      consuner:
+        'recent': 'Recent added providers'
+      consumer:
         'details': 'Consumer Details'
         'providers': 'Providers'
         'packages': 'Packages'
+        'recent': 'Recent added consumers'
+      fetcher:
+        'recent': 'Recent added fetchers'

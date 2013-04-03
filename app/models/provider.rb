@@ -17,6 +17,8 @@ class Provider < ActiveRecord::Base
   validates :description, :presence => true
   validates :provider_type, :presence => true
 
+  scope :recent, :limit => 10, :order => 'created_at DESC'
+
   def name
     "#{description}"
   end
