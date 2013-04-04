@@ -7,6 +7,8 @@ en:
         'supplies': 'Supplies'
         'fetchers': 'Fetchers'
         'recent': 'Recent added providers'
+        'packages': 'Packages'
+        'ipaddresses': 'IP Addresses'
       consumer:
         'details': 'Consumer Details'
         'providers': 'Providers'
