@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 gem 'rails'
 gem 'railties'
 gem 'jquery-rails'
-# 0.5.1 is broken with has_many
-gem 'activeadmin', '0.5.0'
+gem 'activeadmin'
 gem 'devise_cas_authenticatable'
 
 # Bundle edge Rails instead:
