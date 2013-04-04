@@ -16,6 +16,7 @@ describe Rest::DeliverPeriodsController do
     it "no html view" do
       get :index
       response.should_not render_template :index
+      response.status.should be(406)
     end
   end
 
