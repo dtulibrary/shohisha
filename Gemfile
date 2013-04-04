@@ -35,11 +35,11 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'sqlite3'
+  # Static analysis for security vulnerabilities.
+  gem 'brakeman', :require => false
 end
 
 group :development do
-  # Static analysis for security vulnerabilities.
-  gem 'brakeman'
   gem 'rails_best_practices'
   gem 'debugger'
 end
