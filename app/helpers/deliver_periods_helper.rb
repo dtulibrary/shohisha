@@ -1,2 +1,0 @@
-module DeliverPeriodsHelper
-end
