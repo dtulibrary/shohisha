@@ -25,4 +25,13 @@ class Fetcher < ActiveRecord::Base
 
   scope :recent, :limit => 10, :order => 'created_at DESC'
 
+  def self.from_param(param)
+     param.each do |key, value|
+       if /_id\z/.match(key) and self.accessible_attributes.include?(key)
+         return where(key.to_sym => value)
+       end
+     end
+     Fetcher.all
+  end
+
 end

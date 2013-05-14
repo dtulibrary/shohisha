@@ -22,4 +22,17 @@ class Provider < ActiveRecord::Base
   def name
     "#{description}"
   end
+
+  def self.from_param(params)
+    if params[:fetcher_id]
+      return [Fetcher.find(params[:fetcher_id]).provider]
+    elsif params[:consumer_id]
+      return Consumer.find(params[:consumer_id]).providers
+    elsif params[:package_id]
+      return [Package.find(params[:package_id]).provider]
+    elsif params[:provider_type_id]
+      return Provider.where(:provider_type_id => params[:provider_type_id])
+    end
+    Provider.all
+  end
 end
