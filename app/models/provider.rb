@@ -5,7 +5,7 @@ class Provider < ActiveRecord::Base
   has_many :packages, :dependent => :restrict
   has_many :consumers_providers, :dependent => :restrict
   has_many :consumers, :through => :consumers_providers
-  has_many :ipaddresses, :dependent => :restrict
+  has_many :ipaddresses, :dependent => :destroy
   has_many :fetchers, :dependent => :restrict
   has_many :supplies, :through => :fetchers
   accepts_nested_attributes_for :consumers_providers, :allow_destroy => true

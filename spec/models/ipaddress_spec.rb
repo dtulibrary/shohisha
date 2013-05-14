@@ -14,4 +14,10 @@ describe Ipaddress do
     FactoryGirl.build(:ipaddress, address: nil).should_not be_valid
   end
 
+  it "destroy with provider" do
+    ipaddress = FactoryGirl.create(:ipaddress)
+    ipaddress.provider.destroy
+    expect(Ipaddress.find_by_id(ipaddress.id)).to eq(nil)
+  end
+
 end

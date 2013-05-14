@@ -96,6 +96,7 @@ describe Rest::ConsumersController do
     # GET /rest/consumers/1.json
     it "assigns and renders @consumer" do
       consumer = FactoryGirl.create(:consumer)
+      consumer2 = FactoryGirl.create(:consumer)
       get :show, id: consumer, :format => :json
       assigns(:consumer).should eq (consumer)
       response.header['Content-Type'].should include 'application/json'

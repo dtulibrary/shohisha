@@ -23,6 +23,7 @@ describe Rest::ProviderTypesController do
     # GET /rest/providers_types/1.json
     it "assigns and renders @provider_type" do
       provider_type = FactoryGirl.create(:provider_type)
+      provider_type2 = FactoryGirl.create(:provider_type)
       get :show, id: provider_type, :format => :json
       assigns(:provider_type).should eq (provider_type)
       response.header['Content-Type'].should include 'application/json'

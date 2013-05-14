@@ -43,13 +43,6 @@ describe Provider do
     end
   end
   
-  it "restrict delete with ip address" do
-    ipaddress = FactoryGirl.create(:ipaddress)
-    assert_raise ActiveRecord::DeleteRestrictionError do
-      ipaddress.provider.destroy
-    end
-  end
-
   it "restrict delete with package" do
     package = FactoryGirl.create(:package)
     assert_raise ActiveRecord::DeleteRestrictionError do

@@ -5,6 +5,8 @@ class Transport < ActiveRecord::Base
     :uses_remote_delete, :uses_seperator, :uses_set, :uses_set_limit,
     :uses_timeout, :uses_username
 
+  has_many :fetchers, :dependent => :restrict
+
   validates :code, :presence => true, :uniqueness => true
 
   def name

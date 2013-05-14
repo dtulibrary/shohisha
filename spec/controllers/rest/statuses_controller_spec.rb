@@ -23,6 +23,7 @@ describe Rest::StatusesController do
     # GET /rest/statuses/1.json
     it "assigns and renders @status" do
       status = FactoryGirl.create(:status)
+      status2 = FactoryGirl.create(:status)
       get :show, id: status, :format => :json
       assigns(:status).should eq (status)
       response.header['Content-Type'].should include 'application/json'

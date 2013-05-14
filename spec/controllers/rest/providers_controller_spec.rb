@@ -15,6 +15,7 @@ describe Rest::ProvidersController do
     # GET /rest/fetchers/1/providers.json
     it "renders through fetchers" do
       fetcher = FactoryGirl.create(:fetcher)
+      fetcher2 = FactoryGirl.create(:fetcher)
       get :index, fetcher_id: fetcher, :format => :json
       response.header['Content-Type'].should include 'application/json'
       response.body.should eq [fetcher.provider].to_json
@@ -59,9 +60,19 @@ describe Rest::ProvidersController do
     # GET /rest/packages/1/providers.json
     it "renders through packages" do
       package = FactoryGirl.create(:package)
+      package2 = FactoryGirl.create(:package)
       get :index, package_id: package, :format => :json
       response.header['Content-Type'].should include 'application/json'
       response.body.should eq [package.provider].to_json
+    end
+
+    # GET /rest/provider_types/1/providers.json
+    it "renders through provider_types" do
+      provider = FactoryGirl.create(:provider)
+      provider2 = FactoryGirl.create(:provider)
+      get :index, provider_type_id: provider.provider_type, :format => :json
+      response.header['Content-Type'].should include 'application/json'
+      response.body.should eq [provider].to_json
     end
 
     # GET /rest/providers.html
@@ -94,6 +105,7 @@ describe Rest::ProvidersController do
     # GET /rest/providers/1.json
     it "assigns and renders @provider" do
       provider = FactoryGirl.create(:provider)
+      provider2 = FactoryGirl.create(:provider)
       get :show, id: provider, :format => :json
       assigns(:provider).should eq (provider)
       response.header['Content-Type'].should include 'application/json'

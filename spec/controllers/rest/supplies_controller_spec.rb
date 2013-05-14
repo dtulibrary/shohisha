@@ -23,6 +23,7 @@ describe Rest::SuppliesController do
     # GET /rest/supplies/1.json
     it "assigns and renders @supply" do
       supply = FactoryGirl.create(:supply)
+      supply2 = FactoryGirl.create(:supply)
       get :show, id: supply, :format => :json
       assigns(:supply).should eq (supply)
       response.header['Content-Type'].should include 'application/json'

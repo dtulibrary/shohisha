@@ -20,4 +20,11 @@ describe Status do
     FactoryGirl.build(:status, code: status.code).should_not be_valid
   end
 
+  it "restrict delete with fetcher" do
+    fetcher = FactoryGirl.create(:fetcher)
+    assert_raise ActiveRecord::DeleteRestrictionError do
+      fetcher.status.destroy
+    end
+  end
+
 end

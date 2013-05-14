@@ -24,6 +24,7 @@ describe Rest::DeliverPeriodsController do
     # GET /rest/deliver_periods/1.json
     it "assigns and renders @deliver_period" do
       deliver_period = FactoryGirl.create(:deliver_period)
+      deliver_period2 = FactoryGirl.create(:deliver_period)
       get :show, id: deliver_period, :format => :json
       assigns(:deliver_period).should eq (deliver_period)
       response.header['Content-Type'].should include 'application/json'

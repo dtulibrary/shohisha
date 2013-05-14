@@ -20,4 +20,10 @@ describe ProviderType do
     FactoryGirl.build(:provider_type, code: provider_type.code).should_not be_valid
   end
 
+  it "restrict delete with provider" do
+    provider = FactoryGirl.create(:provider)
+    assert_raise ActiveRecord::DeleteRestrictionError do
+      provider.provider_type.destroy
+    end
+  end
 end

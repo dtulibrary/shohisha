@@ -23,6 +23,7 @@ describe Rest::RetainsController do
     # GET /rest/retains/1.json
     it "assigns and renders @retain" do
       retain = FactoryGirl.create(:retain)
+      retain2 = FactoryGirl.create(:retain)
       get :show, id: retain, :format => :json
       assigns(:retain).should eq (retain)
       response.header['Content-Type'].should include 'application/json'

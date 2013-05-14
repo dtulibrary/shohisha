@@ -3,6 +3,8 @@ class Retain < ActiveRecord::Base
 
   validates :code, :presence => true, :uniqueness => true
 
+  has_many :fetchers, :dependent => :restrict
+
   def name
     I18n.t code, :scope => 'shohisha.code.retain'
   end

@@ -23,6 +23,7 @@ describe Rest::FulltextsController do
     # GET /rest/fulltexts/1.json
     it "assigns and renders @fulltext" do
       fulltext = FactoryGirl.create(:fulltext)
+      fulltext2 = FactoryGirl.create(:fulltext)
       get :show, id: fulltext, :format => :json
       assigns(:fulltext).should eq (fulltext)
       response.header['Content-Type'].should include 'application/json'

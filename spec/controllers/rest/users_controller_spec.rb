@@ -23,6 +23,7 @@ describe Rest::UsersController do
     # GET /rest/users/1.json
     it "assigns and renders @user" do
       user = FactoryGirl.create(:user)
+      user2 = FactoryGirl.create(:user)
       get :show, id: user, :format => :json
       assigns(:user).should eq (user)
       response.header['Content-Type'].should include 'application/json'

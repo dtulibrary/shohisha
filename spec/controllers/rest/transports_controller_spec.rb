@@ -23,6 +23,7 @@ describe Rest::TransportsController do
     # GET /rest/transports/1.json
     it "assigns and renders @transport" do
       transport = FactoryGirl.create(:transport)
+      transport2 = FactoryGirl.create(:transport)
       get :show, id: transport, :format => :json
       assigns(:transport).should eq (transport)
       response.header['Content-Type'].should include 'application/json'

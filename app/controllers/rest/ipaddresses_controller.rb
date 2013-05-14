@@ -1,7 +1,11 @@
 class Rest::IpaddressesController < ApplicationController
   # GET /ipaddresses.json
   def index
-    @ipaddresses = Ipaddress.all
+    if params[:provider_id]
+      @ipaddresses = Ipaddress.where(provider_id: params[:provider_id])
+    else
+      @ipaddresses = Ipaddress.all
+    end
 
     respond_to do |format|
       format.json { render :json => @ipaddresses }

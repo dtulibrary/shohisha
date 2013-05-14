@@ -68,6 +68,7 @@ describe Rest::PackagesController do
    # GET /package/1.json
     it "assigns and renders @package" do
       package = FactoryGirl.create(:package)
+      package2 = FactoryGirl.create(:package)
       get :show, id: package, :format => :json
       assigns(:package).should eq (package)
       response.header['Content-Type'].should include 'application/json'

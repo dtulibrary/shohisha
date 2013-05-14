@@ -15,4 +15,11 @@ describe DeliverPeriod do
     period.name.should eq "translation missing: en.shohisha.code.deliver_period."+period.code
   end
 
+  it "restrict delete with fetcher" do
+    fetcher = FactoryGirl.create(:fetcher)
+    assert_raise ActiveRecord::DeleteRestrictionError do
+      fetcher.deliver_period.destroy
+    end
+  end
+
 end
