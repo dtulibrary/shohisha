@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514124259) do
+ActiveRecord::Schema.define(:version => 20130515111042) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20130514124259) do
   end
 
   add_index "providers", ["code"], :name => "index_providers_on_code", :unique => true
+  add_index "providers", ["provider_type_id"], :name => "index_providers_on_provider_type_id"
 
   create_table "retains", :force => true do |t|
     t.string   "code",       :null => false
