@@ -14,6 +14,12 @@ ActiveAdmin.register Provider do
     end
   end
 
+  sidebar I18n.t('shohisha.admin.provider.ipaddresses'), :only => [ :show ] do
+    table_for(provider.ipaddresses) do
+      column :address
+    end
+  end
+
   form do |f|
     f.inputs I18n.t('shohisha.admin.provider.details') do
       f.input :code
