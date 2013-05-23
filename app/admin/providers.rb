@@ -1,20 +1,20 @@
 ActiveAdmin.register Provider do
   menu :priority => 2
 
-  sidebar I18n.t('shohisha.admin.provider.supplies'), :only => [ :show, :edit ] do
+  sidebar 'provider.supplies', :only => [ :show, :edit ] do
     table_for(provider.supplies) do
       column :name
     end
   end
 
-  sidebar I18n.t('shohisha.admin.provider.consumers'), :only => [ :show ] do
+  sidebar 'provider.consumers', :only => [ :show ] do
     table_for(provider.consumers_providers) do
       column :consumer
       column :fulltext
     end
   end
 
-  sidebar I18n.t('shohisha.admin.provider.ipaddresses'), :only => [ :show ] do
+  sidebar 'provider.ipaddresses', :only => [ :show ] do
     table_for(provider.ipaddresses) do
       column :address
     end

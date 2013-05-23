@@ -1,17 +1,21 @@
 en:
+  active_admin:
+    sidebars:
+      provider:
+        consumers: 'Consumers'
+        ipaddresses: 'IP Addresses'
+        supplies: 'Supplies'
+      consumer:
+        providers: 'Providers'
   shohisha:
     admin:
       provider:
         'details': 'Provider Details'
-        'consumers': 'Consumers'
-        'supplies': 'Supplies'
         'fetchers': 'Fetchers'
         'recent': 'Recent added providers'
         'packages': 'Packages'
-        'ipaddresses': 'IP Addresses'
       consumer:
         'details': 'Consumer Details'
-        'providers': 'Providers'
         'packages': 'Packages'
         'recent': 'Recent added consumers'
       fetcher:

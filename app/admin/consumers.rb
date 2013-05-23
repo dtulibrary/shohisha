@@ -1,7 +1,7 @@
 ActiveAdmin.register Consumer do
   menu :priority => 3
 
-  sidebar I18n.t('shohisha.admin.consumer.providers'), :only => [ :show ] do
+  sidebar 'consumer.providers', :only => [ :show ] do
     table_for(consumer.consumers_providers) do
       column :provider
       column :fulltext
