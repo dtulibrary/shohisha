@@ -21,4 +21,19 @@ ActiveAdmin.register Fetcher do
     default_actions
   end
 
+  controller do
+    def update
+      @fetcher = Fetcher.find(params[:id])
+      if params[:fetcher][:password].blank?
+        params[:fetcher][:password] = @fetcher.password
+      end
+      @fetcher.update_attributes(params[:fetcher])
+      if @fetcher.errors.blank?
+        redirect_to admin_fetcher_path, :notice => "Fetcher updated successfully."
+      else
+        render :edit
+      end
+    end
+  end
+
 end
