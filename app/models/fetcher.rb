@@ -8,7 +8,8 @@ class Fetcher < ActiveRecord::Base
   attr_accessible :basename, :charset, :directory, :directory_filter,
     :file_filter, :format, :passive, :password, :recursive, :remote_delete,
     :seperator, :set, :set_limit, :timeout, :username, :provider_id,
-    :status_id, :transport_id, :retain_id, :deliver_period_id, :supply_id
+    :status_id, :transport_id, :retain_id, :deliver_period_id, :supply_id,
+    :realm
 
   validates :provider, :presence => true
   validates :status, :presence => true

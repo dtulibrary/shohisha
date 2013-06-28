@@ -48,4 +48,26 @@ describe Admin::FetchersController do
     end
   end
 
+  describe "PUT #update" do
+    it "updates the record" do
+      fetcher = FactoryGirl.create(:fetcher)
+      attr = Hash.new
+      Fetcher.accessible_attributes.each do |a|
+        attr[a] = fetcher.send(a) unless a.blank?
+      end
+      attr['password'] = ''
+      put :update, :id => fetcher.id, :fetcher => attr
+      fetcher.reload
+      fetcher.transport_id.should eq attr['transport_id']
+    end
+
+    it "fails to update the record" do
+      fetcher = FactoryGirl.create(:fetcher)
+      attr = FactoryGirl.attributes_for(:fetcher)
+      attr['transport_id'] = nil
+      put :update, :id => fetcher.id, :fetcher => attr
+      new_fetcher = Fetcher.find_by_id(fetcher.id)
+      new_fetcher.transport_id.should eq fetcher.transport_id
+    end
+  end
 end
