@@ -19,6 +19,8 @@ en:
         'DS2::Fetcher::OAI': 'OAI-PMH'
         'DS2::Fetcher::Sorbit': 'Sorbit'
         'DS2::Fetcher::Entrez': 'Entrez (PubMed)'
+        'DS2::Fetcher::NTIS': 'DS2 NTIS'
+        'DS2::Fetcher::TRAIL': 'DS2 TRAIL'
       status:
         'test':  'Testing'
         'prod':  'Production'
@@ -34,6 +36,7 @@ en:
         'journal': 'Journal Metadata'
         'cash': 'Cash transactions'
         'cover': 'Cover images'
+        'book': 'Pbook Metadata'
       fulltext:
         'none': 'No handling'
         'default': 'Default handling'
