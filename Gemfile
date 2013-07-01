@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails'
 gem 'railties'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.3.0'
 gem 'activeadmin'
 gem 'devise_cas_authenticatable'
 gem 'json'
