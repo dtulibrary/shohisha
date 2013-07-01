@@ -24,7 +24,8 @@ class Rest::ProvidersController < ApplicationController
 
     respond_to do |format|
       format.json { render :json => @provider }
-      format.text { render :text => @provider.id }
+      format.text { render :text => (@provider ? @provider.id : ''),
+                    :status => (@provider ? 200 : 404) }
     end
   end
 

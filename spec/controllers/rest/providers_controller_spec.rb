@@ -99,6 +99,13 @@ describe Rest::ProvidersController do
       response.body.should eq "#{provider.id}"
     end
 
+    # GET /rest/providercode/code.text
+    it "renders text" do
+      provider = FactoryGirl.create(:provider)
+      get :code, code: 'fakecode', :format => :text
+      response.header['Content-Type'].should include 'text/plain'
+      response.status.should eq 404
+    end
   end
 
   describe "GET #show" do
