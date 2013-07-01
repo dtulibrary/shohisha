@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Transport do
 
   it "has a valid factory" do
-    FactoryGirl.create(:transport).should be_valid
+    FactoryGirl.build(:transport).should be_valid
   end
 
   it "fails without code" do

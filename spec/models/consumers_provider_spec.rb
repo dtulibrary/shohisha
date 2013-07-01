@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ConsumersProvider do
 
   it "has a valid factory" do
-    FactoryGirl.create(:consumers_provider).should be_valid
+    FactoryGirl.build(:consumers_provider).should be_valid
   end
 
   it "fails without consumer" do

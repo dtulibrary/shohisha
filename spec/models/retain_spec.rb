@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Retain do
 
   it "has a valid factory" do
-    FactoryGirl.create(:retain).should be_valid
+    FactoryGirl.build(:retain).should be_valid
   end
 
   it "fails without code" do

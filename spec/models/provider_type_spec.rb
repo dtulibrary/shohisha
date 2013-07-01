@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ProviderType do
 
   it "has a valid factory" do
-    FactoryGirl.create(:provider_type).should be_valid
+    FactoryGirl.build(:provider_type).should be_valid
   end
 
   it "fails without code" do

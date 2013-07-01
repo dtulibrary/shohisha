@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Status do
 
   it "has a valid factory" do
-    FactoryGirl.create(:status).should be_valid
+    FactoryGirl.build(:status).should be_valid
   end
 
   it "fails without code" do

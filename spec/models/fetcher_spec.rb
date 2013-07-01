@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Fetcher do
 
   it "has a valid factory" do
-    FactoryGirl.create(:fetcher).should be_valid
+    FactoryGirl.build(:fetcher).should be_valid
   end
 
   it "fails without provider" do

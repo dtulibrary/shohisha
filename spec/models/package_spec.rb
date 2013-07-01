@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Package do
 
   it "has a valid factory" do
-    FactoryGirl.create(:package).should be_valid
+    FactoryGirl.build(:package).should be_valid
   end
 
   it "fails without code" do

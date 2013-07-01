@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Fulltext do
 
   it "has a valid factory" do
-    FactoryGirl.create(:fulltext).should be_valid
+    FactoryGirl.build(:fulltext).should be_valid
   end
 
   it "fails without code" do
