@@ -29,7 +29,6 @@ group :test do
   gem 'simplecov-rcov', :require => false
   gem 'mocha', :require => false
   gem 'factory_girl_rails'
-  gem 'database_cleaner'
 end
 
 group :test, :development do

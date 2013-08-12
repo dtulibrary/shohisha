@@ -34,8 +34,4 @@ RSpec.configure do |config|
   config.mock_with :mocha
 end
 
-require 'database_cleaner'
-DatabaseCleaner.strategy = :truncation
-DatabaseCleaner.clean
-
 #Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
