@@ -55,7 +55,6 @@ describe Admin::FetchersController do
       Fetcher.accessible_attributes.each do |a|
         attr[a] = fetcher.send(a) unless a.blank?
       end
-      attr['password'] = ''
       put :update, :id => fetcher.id, :fetcher => attr
       fetcher.reload
       fetcher.transport_id.should eq attr['transport_id']

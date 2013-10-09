@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130628132933) do
+ActiveRecord::Schema.define(:version => 20131009085908) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20130628132933) do
     t.integer  "transport_id",                                     :null => false
     t.integer  "retain_id",                                        :null => false
     t.string   "username"
-    t.string   "password"
+    t.string   "passkey"
     t.string   "basename"
     t.string   "directory"
     t.string   "seperator"
@@ -90,6 +90,8 @@ ActiveRecord::Schema.define(:version => 20130628132933) do
     t.integer  "deliver_period_id"
     t.integer  "supply_id",                         :default => 0, :null => false
     t.string   "realm"
+    t.integer  "port"
+    t.string   "encryption"
   end
 
   add_index "fetchers", ["deliver_period_id"], :name => "index_fetchers_on_deliver_period_id"
@@ -180,7 +182,7 @@ ActiveRecord::Schema.define(:version => 20130628132933) do
     t.boolean  "uses_file_filter",      :default => true, :null => false
     t.boolean  "uses_format",           :default => true, :null => false
     t.boolean  "uses_passive",          :default => true, :null => false
-    t.boolean  "uses_password",         :default => true, :null => false
+    t.boolean  "uses_passkey",          :default => true, :null => false
     t.boolean  "uses_recursive",        :default => true, :null => false
     t.boolean  "uses_remote_delete",    :default => true, :null => false
     t.boolean  "uses_seperator",        :default => true, :null => false
@@ -188,6 +190,9 @@ ActiveRecord::Schema.define(:version => 20130628132933) do
     t.boolean  "uses_set_limit",        :default => true, :null => false
     t.boolean  "uses_timeout",          :default => true, :null => false
     t.boolean  "uses_username",         :default => true, :null => false
+    t.boolean  "uses_encryption",       :default => true, :null => false
+    t.boolean  "uses_port",             :default => true, :null => false
+    t.boolean  "uses_realm",            :default => true, :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -13,7 +13,7 @@ FactoryGirl.define do
     f.directory_filter "."
     f.file_filter "."
     f.username "user"
-    f.password "password"
+    f.passkey "password"
     f.remote_delete "0"
   end
 end
