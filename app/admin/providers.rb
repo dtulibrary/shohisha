@@ -36,11 +36,13 @@ ActiveAdmin.register Provider do
     f.has_many :packages do |p|
       p.inputs I18n.t('shohisha.admin.provider.packages') do
         p.input :code
+        p.input :_destroy, :as => :boolean, :label => "Delete?"
       end
     end
     f.has_many :ipaddresses do |a|
       a.inputs I18n.t('shohisha.admin.provider.ipaddresses') do
         a.input :address
+        a.input :_destroy, :as => :boolean, :label => "Delete?"
       end
     end
 
