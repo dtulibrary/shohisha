@@ -9,7 +9,7 @@ gem 'json'
 gem 'httparty'
 
 # Deploy with Capistrano
-gem 'capistrano'
+gem 'capistrano', '~> 2.15'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2'
