@@ -48,7 +48,8 @@ module CloneSite
 
     def create
       @nodes = {}
-      ActiveRecord::Base.connection.tables.map{|x|x.classify.safe_constantize}.compact.each do |model|
+      ActiveRecord::Base.connection.tables.map{|x|x.classify.safe_constantize}.
+          compact.each do |model|
         @nodes[model] ||= Node.new(model)
         model.reflect_on_all_associations(:belongs_to).each do |assoc|
           @nodes[assoc.klass] ||= Node.new(assoc.klass)

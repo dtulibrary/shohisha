@@ -1,6 +1,6 @@
 class Provider < ActiveRecord::Base
-  attr_accessible :description, :code, :consumers_providers_attributes, :packages_attributes,
-    :ipaddresses_attributes, :provider_type_id
+  attr_accessible :description, :code, :consumers_providers_attributes,
+    :packages_attributes, :ipaddresses_attributes, :provider_type_id
 
   has_many :packages, :dependent => :restrict
   has_many :consumers_providers, :dependent => :restrict
