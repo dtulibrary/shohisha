@@ -8,6 +8,12 @@ ActiveAdmin.register Consumer do
     end
   end
 
+  sidebar 'consumer.packages', :only => [ :show ] do
+    table_for(consumer.consumers_packages) do
+      column :package
+      column :fulltext
+    end
+  end
   form do |f|
     f.inputs I18n.t('shohisha.admin.consumer.details') do
       f.input :code
