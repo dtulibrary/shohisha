@@ -3,25 +3,25 @@ require 'spec_helper'
 describe Consumer do
 
   it "has a valid factory" do
-    FactoryGirl.build(:consumer).should be_valid
+    expect(FactoryGirl.build(:consumer)).to be_valid
   end
 
   it "fails without code" do
-    FactoryGirl.build(:consumer, code: nil).should_not be_valid
+    expect(FactoryGirl.build(:consumer, code: nil)).not_to be_valid
   end
 
   it "fails without description" do
-    FactoryGirl.build(:consumer, description: nil).should_not be_valid
+    expect(FactoryGirl.build(:consumer, description: nil)).not_to be_valid
   end
 
   it "name is the description" do
     consumer = FactoryGirl.build(:consumer)
-    consumer.name.should eq consumer.description
+    expect(consumer.name).to eq consumer.description
   end
 
   it "code is unique" do
     consumer = FactoryGirl.create(:consumer)
-    FactoryGirl.build(:consumer, code: consumer.code).should_not be_valid
+    expect(FactoryGirl.build(:consumer, code: consumer.code)).not_to be_valid
   end
 
   it "restrict delete with provider" do
@@ -34,9 +34,8 @@ describe Consumer do
       }
     )
     provider.consumers_providers = [consumer_provider]
-    assert_raise ActiveRecord::DeleteRestrictionError do
-      consumer.destroy
-    end
+    expect{consumer.destroy}.to raise_error(
+      ActiveRecord::DeleteRestrictionError)
   end
 
   it "restrict delete with package" do
@@ -49,9 +48,8 @@ describe Consumer do
       }
     )
     package.consumers_packages = [consumer_package]
-    assert_raise ActiveRecord::DeleteRestrictionError do
-      consumer.destroy
-    end
+    expect{consumer.destroy}.to raise_error(
+      ActiveRecord::DeleteRestrictionError)
   end
 
 end

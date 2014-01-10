@@ -8,8 +8,8 @@ describe Rest::ConsumersController do
     it "renders view" do
       consumer_list = FactoryGirl.create_list(:consumer, 3)
       get :index, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq consumer_list.to_json
+      expect(response.header['Content-Type']).to include('application/json')
+      expect(response.body).to eq consumer_list.to_json
     end
 
     # GET /rest/packages/1/consumers.json
@@ -41,11 +41,11 @@ describe Rest::ConsumersController do
         )
       ]
       get :index, package_id: package, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [consumer, consumer2, consumer3].to_json
+      expect(response.header['Content-Type']).to include('application/json')
+      expect(response.body).to eq [consumer, consumer2, consumer3].to_json
       get :index, package_id: package2, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [consumer3, consumer4].to_json
+      expect(response.header['Content-Type']).to include('application/json')
+      expect(response.body).to eq [consumer3, consumer4].to_json
     end
 
     # GET /rest/providers/1/consumers.json
@@ -78,17 +78,18 @@ describe Rest::ConsumersController do
         ),
       ]
       get :index, provider_id: provider, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [consumer, consumer2, consumer3].to_json
+      expect(response.header['Content-Type']).to include('application/json')
+      expect(response.body).to eq [consumer, consumer2, consumer3].to_json
       get :index, provider_id: provider2, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [consumer3, consumer4].to_json
+      expect(response.header['Content-Type']).to include('application/json')
+      expect(response.body).to eq [consumer3, consumer4].to_json
     end
 
     # GET /rest/consumers.html
     it "no html view" do
       get :index
-      response.should_not render_template :index
+      expect(response).not_to render_template :index
+      expect(response.status).to eq 406
     end
   end
 
@@ -98,9 +99,9 @@ describe Rest::ConsumersController do
       consumer = FactoryGirl.create(:consumer)
       consumer2 = FactoryGirl.create(:consumer)
       get :show, id: consumer, :format => :json
-      assigns(:consumer).should eq (consumer)
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq consumer.to_json
+      expect(assigns(:consumer)).to eq (consumer)
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq consumer.to_json
     end
   end
   

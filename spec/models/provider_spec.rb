@@ -3,29 +3,29 @@ require 'spec_helper'
 describe Provider do
 
   it "has a valid factory" do
-    FactoryGirl.build(:provider).should be_valid
+    expect(FactoryGirl.build(:provider)).to be_valid
   end
 
   it "fails without code" do
-    FactoryGirl.build(:provider, code: nil).should_not be_valid
+    expect(FactoryGirl.build(:provider, code: nil)).not_to be_valid
   end
 
   it "fails without description" do
-    FactoryGirl.build(:provider, description: nil).should_not be_valid
+    expect(FactoryGirl.build(:provider, description: nil)).not_to be_valid
   end
 
   it "fails without type" do
-    FactoryGirl.build(:provider, provider_type: nil).should_not be_valid
+    expect(FactoryGirl.build(:provider, provider_type: nil)).not_to be_valid
   end
 
   it "name is the description" do
     provider = FactoryGirl.build(:provider)
-    provider.name.should eq provider.description
+    expect(provider.name).to eq provider.description
   end
 
   it "code is unique" do
     provider = FactoryGirl.create(:provider)
-    FactoryGirl.build(:provider, code: provider.code).should_not be_valid
+    expect(FactoryGirl.build(:provider, code: provider.code)).not_to be_valid
   end
 
   it "restrict delete with consumer" do
@@ -38,23 +38,20 @@ describe Provider do
       }
     )
     consumer.consumers_providers = [consumer_provider]
-    assert_raise ActiveRecord::DeleteRestrictionError do
-      provider.destroy
-    end
+    expect{provider.destroy}.to raise_error(
+      ActiveRecord::DeleteRestrictionError)
   end
   
   it "restrict delete with package" do
     package = FactoryGirl.create(:package)
-    assert_raise ActiveRecord::DeleteRestrictionError do
-      package.provider.destroy
-    end
+    expect{package.provider.destroy}.to raise_error(
+      ActiveRecord::DeleteRestrictionError)
   end
 
   it "restrict delete with fetcher" do
     fetcher = FactoryGirl.create(:fetcher)
-    assert_raise ActiveRecord::DeleteRestrictionError do
-      fetcher.provider.destroy
-    end
+    expect{fetcher.provider.destroy}.to raise_error(
+      ActiveRecord::DeleteRestrictionError)
   end
 
 end

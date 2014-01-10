@@ -8,14 +8,15 @@ describe Rest::RetainsController do
     it "renders view" do
       retain_list = FactoryGirl.create_list(:retain, 3)
       get :index, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq retain_list.to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq retain_list.to_json
     end
 
     # GET /rest/retains.html
     it "no html view" do
       get :index
-      response.should_not render_template :index
+      expect(response).not_to render_template :index
+      expect(response.status).to eq 406
     end
   end
 
@@ -25,9 +26,9 @@ describe Rest::RetainsController do
       retain = FactoryGirl.create(:retain)
       retain2 = FactoryGirl.create(:retain)
       get :show, id: retain, :format => :json
-      assigns(:retain).should eq (retain)
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq retain.to_json
+      expect(assigns(:retain)).to eq (retain)
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq retain.to_json
     end
   end
   

@@ -3,19 +3,19 @@ require 'spec_helper'
 describe Package do
 
   it "has a valid factory" do
-    FactoryGirl.build(:package).should be_valid
+    expect(FactoryGirl.build(:package)).to be_valid
   end
 
   it "fails without code" do
-    FactoryGirl.build(:package, code: nil).should_not be_valid
+    expect(FactoryGirl.build(:package, code: nil)).not_to be_valid
   end
 
   it "fails without description" do
-    FactoryGirl.build(:package, description: nil).should_not be_valid
+    expect(FactoryGirl.build(:package, description: nil)).not_to be_valid
   end
 
   it "fails without provider" do
-    FactoryGirl.build(:package, provider: nil).should_not be_valid
+    expect(FactoryGirl.build(:package, provider: nil)).not_to be_valid
   end
 
   describe "Package test nested attributes" do
@@ -36,7 +36,7 @@ describe Package do
         }
       })
       package.reload
-      package.consumers.should eq ([consumer])
+      expect(package.consumers).to match_array([consumer])
 
       #relations = package.consumers.where(nil)
       #relations.first.should eq '0'
@@ -64,12 +64,12 @@ describe Package do
 
   it "name is the description" do
     package = FactoryGirl.build(:package)
-    package.name.should eq package.description
+    expect(package.name).to eq package.description
   end
 
   it "code is unique" do
     package = FactoryGirl.create(:package)
-    FactoryGirl.build(:package, code: package.code).should_not be_valid
+    expect(FactoryGirl.build(:package, code: package.code)).not_to be_valid
   end
 
   it "restrict delete with package" do
@@ -82,9 +82,8 @@ describe Package do
       }
     )
     consumer.consumers_packages = [consumer_package]
-    assert_raise ActiveRecord::DeleteRestrictionError do
-      package.destroy
-    end
+    expect{package.destroy}.to raise_error(
+      ActiveRecord::DeleteRestrictionError)
   end
 
 end

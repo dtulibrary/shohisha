@@ -8,8 +8,8 @@ describe Rest::ProvidersController do
     it "renders view" do
       provider_list = FactoryGirl.create_list(:provider, 3)
       get :index, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq provider_list.to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq provider_list.to_json
     end
 
     # GET /rest/fetchers/1/providers.json
@@ -17,8 +17,8 @@ describe Rest::ProvidersController do
       fetcher = FactoryGirl.create(:fetcher)
       fetcher2 = FactoryGirl.create(:fetcher)
       get :index, fetcher_id: fetcher, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [fetcher.provider].to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq [fetcher.provider].to_json
     end
 
     # GET /rest/consumers/1/providers.json
@@ -50,11 +50,11 @@ describe Rest::ProvidersController do
         ),
       ]
       get :index, consumer_id: consumer, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [provider, provider2, provider3].to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq [provider, provider2, provider3].to_json
       get :index, consumer_id: consumer2, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [provider3, provider4].to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq [provider3, provider4].to_json
     end
 
     # GET /rest/packages/1/providers.json
@@ -62,8 +62,8 @@ describe Rest::ProvidersController do
       package = FactoryGirl.create(:package)
       package2 = FactoryGirl.create(:package)
       get :index, package_id: package, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [package.provider].to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq [package.provider].to_json
     end
 
     # GET /rest/provider_types/1/providers.json
@@ -71,14 +71,15 @@ describe Rest::ProvidersController do
       provider = FactoryGirl.create(:provider)
       provider2 = FactoryGirl.create(:provider)
       get :index, provider_type_id: provider.provider_type, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [provider].to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq [provider].to_json
     end
 
     # GET /rest/providers.html
     it "no html view" do
       get :index
-      response.should_not render_template :index
+      expect(response).not_to render_template :index
+      expect(response.status).to eq 406
     end
   end
 
@@ -87,24 +88,24 @@ describe Rest::ProvidersController do
     it "renders json" do
       provider = FactoryGirl.create(:provider)
       get :code, code: provider.code, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq provider.to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq provider.to_json
     end
 
     # GET /rest/providercode/code.text
     it "renders text" do
       provider = FactoryGirl.create(:provider)
       get :code, code: provider.code, :format => :text
-      response.header['Content-Type'].should include 'text/plain'
-      response.body.should eq "#{provider.id}"
+      expect(response.header['Content-Type']).to include 'text/plain'
+      expect(response.body).to eq "#{provider.id}"
     end
 
     # GET /rest/providercode/code.text
     it "renders text" do
       provider = FactoryGirl.create(:provider)
       get :code, code: 'fakecode', :format => :text
-      response.header['Content-Type'].should include 'text/plain'
-      response.status.should eq 404
+      expect(response.header['Content-Type']).to include 'text/plain'
+      expect(response.status).to eq 404
     end
   end
 
@@ -114,9 +115,9 @@ describe Rest::ProvidersController do
       provider = FactoryGirl.create(:provider)
       provider2 = FactoryGirl.create(:provider)
       get :show, id: provider, :format => :json
-      assigns(:provider).should eq (provider)
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq provider.to_json
+      expect(assigns(:provider)).to eq (provider)
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq provider.to_json
     end
   end
   

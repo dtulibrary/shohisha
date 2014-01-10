@@ -14,21 +14,22 @@ describe Rest::IpaddressesController do
     # GET /rest/ipaddresses.json
     it "renders view" do
       get :index, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq @ip_list.to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq @ip_list.to_json
     end
 
     # GET /rest/ipaddresses.html
     it "no html view" do
       get :index
-      response.should_not render_template :index
+      expect(response).not_to render_template :index
+      expect(response.status).to eq 406
     end
 
     # GET /rest/providers/1/ipaddresses.json
     it "renders through providers" do
       get :index, provider_id: @ipaddress1.provider.id, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [@ipaddress1, @ipaddress2].to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq [@ipaddress1, @ipaddress2].to_json
     end
   end
 
@@ -41,9 +42,9 @@ describe Rest::IpaddressesController do
     # GET /rest/ipaddresses/1.json
     it "assigns and renders ipaddress" do
       get :show, id: @ipaddress1, :format => :json
-      assigns(:ipaddress).should eq (@ipaddress1)
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq @ipaddress1.to_json
+      expect(assigns(:ipaddress)).to eq (@ipaddress1)
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq @ipaddress1.to_json
     end
   end
   

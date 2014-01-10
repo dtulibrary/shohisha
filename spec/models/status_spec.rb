@@ -3,28 +3,28 @@ require 'spec_helper'
 describe Status do
 
   it "has a valid factory" do
-    FactoryGirl.build(:status).should be_valid
+    expect(FactoryGirl.build(:status)).to be_valid
   end
 
   it "fails without code" do
-    FactoryGirl.build(:status, code: nil).should_not be_valid
+    expect(FactoryGirl.build(:status, code: nil)).not_to be_valid
   end
 
   it "returns untranslated name" do
     status = FactoryGirl.build(:status)
-    status.name.should eq "translation missing: en.shohisha.code.status."+status.code
+    expect(status.name).to eq "translation missing: "+
+      "en.shohisha.code.status."+status.code
   end
 
   it "code is unique" do
     status = FactoryGirl.create(:status)
-    FactoryGirl.build(:status, code: status.code).should_not be_valid
+    expect(FactoryGirl.build(:status, code: status.code)).not_to be_valid
   end
 
   it "restrict delete with fetcher" do
     fetcher = FactoryGirl.create(:fetcher)
-    assert_raise ActiveRecord::DeleteRestrictionError do
-      fetcher.status.destroy
-    end
+    expect{fetcher.status.destroy}.to raise_error(
+      ActiveRecord::DeleteRestrictionError)
   end
 
 end

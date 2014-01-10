@@ -8,14 +8,15 @@ describe Rest::TransportsController do
     it "renders view" do
       transport_list = FactoryGirl.create_list(:transport, 3)
       get :index, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq transport_list.to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq transport_list.to_json
     end
 
     # GET /rest/transports.html
     it "no html view" do
       get :index
-      response.should_not render_template :index
+      expect(response).not_to render_template :index
+      expect(response.status).to eq 406
     end
   end
 
@@ -25,9 +26,9 @@ describe Rest::TransportsController do
       transport = FactoryGirl.create(:transport)
       transport2 = FactoryGirl.create(:transport)
       get :show, id: transport, :format => :json
-      assigns(:transport).should eq (transport)
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq transport.to_json
+      expect(assigns(:transport)).to eq (transport)
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq transport.to_json
     end
   end
   

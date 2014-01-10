@@ -3,15 +3,15 @@ require 'spec_helper'
 describe Ipaddress do
 
   it "has a valid factory" do
-    FactoryGirl.build(:ipaddress).should be_valid
+    expect(FactoryGirl.build(:ipaddress)).to be_valid
   end
 
   it "fails without provider" do
-    FactoryGirl.build(:ipaddress, provider: nil).should_not be_valid
+    expect(FactoryGirl.build(:ipaddress, provider: nil)).not_to be_valid
   end
 
   it "fails without address" do
-    FactoryGirl.build(:ipaddress, address: nil).should_not be_valid
+    expect(FactoryGirl.build(:ipaddress, address: nil)).not_to be_valid
   end
 
   it "destroy with provider" do
