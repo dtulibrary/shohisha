@@ -1,0 +1,19 @@
+<h1><%= @consumer.name %></h1>
+
+<h2>Providers</h2>
+<ul>
+<% @consumer.consumers_providers.each do |provider| %>
+  <li><%= provider.provider.name %>, <%= provider.fulltext.name %></li>
+<% end %>
+</ul>
+
+<h2>Packages</h2>
+<ul>
+<% @consumer.consumers_packages.each do |package| %>
+  <li>
+    <%= package.package.name %> from
+    <%= package.package.provider.name %>,
+    <%= package.fulltext.name %>
+  </li>
+<% end %>
+</ul>
