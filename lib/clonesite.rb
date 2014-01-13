@@ -37,9 +37,13 @@ module CloneSite
           # In order to avoid mass assignment of protected attributes it assign
           # each attribute through this loop.
           record.keys.each do |key|
-            new_record.send(key+'=', record[key])
+            new_record.send(key+'=', record[key]) unless key == 'password'
           end
-          new_record.save!
+          begin
+            new_record.save!
+          rescue StandardError => e
+            puts "Failed to save #{model}: #{e.message}"
+          end
         end
       end
     end
