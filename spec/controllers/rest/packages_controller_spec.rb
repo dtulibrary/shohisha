@@ -8,8 +8,8 @@ describe Rest::PackagesController do
     it "renders view" do
       package_list = FactoryGirl.create_list(:package, 3)
       get :index, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq package_list.to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq package_list.to_json
     end
 
     # GET /rest/providers/1/packages.json
@@ -18,11 +18,11 @@ describe Rest::PackagesController do
       package2 = FactoryGirl.create(:package, provider_id: package.provider.id)
       package3 = FactoryGirl.create(:package)
       get :index, provider_id: package.provider, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [package, package2].to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq [package, package2].to_json
       get :index, provider_id: package3.provider, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [package3].to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq [package3].to_json
     end
 
     # GET /rest/consumers/1/packages.json
@@ -50,17 +50,18 @@ describe Rest::PackagesController do
         )
       ]
       get :index, id: package.id, consumer_id: consumer.id, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [package, package2].to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq [package, package2].to_json
       get :index, id: package.id, consumer_id: consumer2.id, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq [package, package3].to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq [package, package3].to_json
     end
 
     # GET /rest/packages.html
     it "no html view" do
       get :index
-      response.should_not render_template :index
+      expect(response).not_to render_template :index
+      expect(response.status).to eq 406
     end
   end
 
@@ -70,9 +71,9 @@ describe Rest::PackagesController do
       package = FactoryGirl.create(:package)
       package2 = FactoryGirl.create(:package)
       get :show, id: package, :format => :json
-      assigns(:package).should eq (package)
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq package.to_json
+      expect(assigns(:package)).to eq (package)
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq package.to_json
     end
   end
   

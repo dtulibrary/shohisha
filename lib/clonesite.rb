@@ -37,9 +37,13 @@ module CloneSite
           # In order to avoid mass assignment of protected attributes it assign
           # each attribute through this loop.
           record.keys.each do |key|
-            new_record.send(key+'=', record[key])
+            new_record.send(key+'=', record[key]) unless key == 'password'
           end
-          new_record.save!
+          begin
+            new_record.save!
+          rescue StandardError => e
+            puts "Failed to save #{model}: #{e.message}"
+          end
         end
       end
     end
@@ -48,7 +52,8 @@ module CloneSite
 
     def create
       @nodes = {}
-      ActiveRecord::Base.connection.tables.map{|x|x.classify.safe_constantize}.compact.each do |model|
+      ActiveRecord::Base.connection.tables.map{|x|x.classify.safe_constantize}.
+          compact.each do |model|
         @nodes[model] ||= Node.new(model)
         model.reflect_on_all_associations(:belongs_to).each do |assoc|
           @nodes[assoc.klass] ||= Node.new(assoc.klass)

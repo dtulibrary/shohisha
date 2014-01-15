@@ -3,28 +3,28 @@ require 'spec_helper'
 describe Transport do
 
   it "has a valid factory" do
-    FactoryGirl.build(:transport).should be_valid
+    expect(FactoryGirl.build(:transport)).to be_valid
   end
 
   it "fails without code" do
-    FactoryGirl.build(:transport, code: nil).should_not be_valid
+    expect(FactoryGirl.build(:transport, code: nil)).not_to be_valid
   end
 
   it "returns untranslated name" do
     transport = FactoryGirl.build(:transport)
-    transport.name.should eq "translation missing: en.shohisha.code.transport."+transport.code
+    expect(transport.name).to eq "translation missing: "+
+      "en.shohisha.code.transport."+transport.code
   end
 
   it "code is unique" do
     transport = FactoryGirl.create(:transport)
-    FactoryGirl.build(:transport, code: transport.code).should_not be_valid
+    expect(FactoryGirl.build(:transport, code: transport.code)).not_to be_valid
   end
 
   it "restrict delete with fetcher" do
     fetcher = FactoryGirl.create(:fetcher)
-    assert_raise ActiveRecord::DeleteRestrictionError do
-      fetcher.transport.destroy
-    end
+    expect{fetcher.transport.destroy}.to raise_error(
+      ActiveRecord::DeleteRestrictionError)
   end
 
 end

@@ -17,8 +17,8 @@ describe Admin::ConsumersController do
     it "renders the :index view" do
       consumer = FactoryGirl.create(:consumer)
       get :index
-      response.status.should be(200)
-      response.should render_template :index
+      expect(response.status).to eq(200)
+      expect(response).to render_template :index
     end
   end
 
@@ -26,16 +26,16 @@ describe Admin::ConsumersController do
     it "renders the #show view" do
       consumer = FactoryGirl.create(:consumer)
       get :show, id: consumer
-      response.status.should be(200)
-      response.should render_template :show
+      expect(response.status).to eq(200)
+      expect(response).to render_template :show
     end
   end
 
   describe "GET #new" do
     it "shows the new template" do
       get :new
-      response.status.should be(200)
-      response.should render_template :new
+      expect(response.status).to eq(200)
+      expect(response).to render_template :new
     end
   end
 
@@ -43,8 +43,8 @@ describe Admin::ConsumersController do
     it "shows the edit template" do
       consumer = FactoryGirl.create(:consumer)
       get :edit, id: consumer
-      response.status.should be(200)
-      response.should render_template :edit
+      expect(response.status).to eq(200)
+      expect(response).to render_template :edit
     end
   end
 

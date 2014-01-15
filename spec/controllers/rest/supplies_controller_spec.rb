@@ -8,14 +8,15 @@ describe Rest::SuppliesController do
     it "renders view" do
       supply_list = FactoryGirl.create_list(:supply, 3)
       get :index, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq supply_list.to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq supply_list.to_json
     end
 
     # GET /rest/supplies.html
     it "no html view" do
       get :index
-      response.should_not render_template :index
+      expect(response).not_to render_template :index
+      expect(response.status).to eq 406
     end
   end
 
@@ -25,9 +26,9 @@ describe Rest::SuppliesController do
       supply = FactoryGirl.create(:supply)
       supply2 = FactoryGirl.create(:supply)
       get :show, id: supply, :format => :json
-      assigns(:supply).should eq (supply)
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq supply.to_json
+      expect(assigns(:supply)).to eq (supply)
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq supply.to_json
     end
   end
   

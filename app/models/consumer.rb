@@ -1,5 +1,6 @@
 class Consumer < ActiveRecord::Base
-  attr_accessible :code, :description, :consumers_providers_attributes, :consumers_packages_attributes
+  attr_accessible :code, :description, :consumers_providers_attributes,
+    :consumers_packages_attributes
 
   has_many :consumers_providers, :dependent => :restrict
   has_many :providers, :through => :consumers_providers

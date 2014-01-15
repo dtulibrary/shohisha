@@ -17,8 +17,8 @@ describe Admin::FetchersController do
     it "renders the :index view" do
       fetcher = FactoryGirl.create(:fetcher)
       get :index
-      response.status.should be(200)
-      response.should render_template :index
+      expect(response.status).to eq(200)
+      expect(response).to render_template :index
     end
   end
 
@@ -26,16 +26,16 @@ describe Admin::FetchersController do
     it "renders the #show view" do
       fetcher = FactoryGirl.create(:fetcher)
       get :show, id: fetcher
-      response.status.should be(200)
-      response.should render_template :show
+      expect(response.status).to eq(200)
+      expect(response).to render_template :show
     end
   end
 
   describe "GET #new" do
     it "shows the new template" do
       get :new
-      response.status.should be(200)
-      response.should render_template :new
+      expect(response.status).to eq(200)
+      expect(response).to render_template :new
     end
   end
 
@@ -43,8 +43,8 @@ describe Admin::FetchersController do
     it "shows the edit template" do
       fetcher = FactoryGirl.create(:fetcher)
       get :edit, id: fetcher
-      response.status.should be(200)
-      response.should render_template :edit
+      expect(response.status).to eq(200)
+      expect(response).to render_template :edit
     end
   end
 
@@ -57,7 +57,7 @@ describe Admin::FetchersController do
       end
       put :update, :id => fetcher.id, :fetcher => attr
       fetcher.reload
-      fetcher.transport_id.should eq attr['transport_id']
+      expect(fetcher.transport_id).to eq attr['transport_id']
     end
 
     it "fails to update the record" do
@@ -66,7 +66,7 @@ describe Admin::FetchersController do
       attr['transport_id'] = nil
       put :update, :id => fetcher.id, :fetcher => attr
       new_fetcher = Fetcher.find_by_id(fetcher.id)
-      new_fetcher.transport_id.should eq fetcher.transport_id
+      expect(new_fetcher.transport_id).to eq fetcher.transport_id
     end
   end
 end

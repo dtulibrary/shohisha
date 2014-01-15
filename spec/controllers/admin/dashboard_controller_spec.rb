@@ -19,8 +19,8 @@ describe Admin::DashboardController do
       FactoryGirl.create(:consumer)
       FactoryGirl.create(:fetcher)
       get :index
-      response.status.should be(200)
-      response.should render_template :index
+      expect(response.status).to eq(200)
+      expect(response).to render_template :index
     end
   end
 end

@@ -8,15 +8,15 @@ describe Rest::DeliverPeriodsController do
     it "renders view" do
       deliver_period_list = FactoryGirl.create_list(:deliver_period, 3)
       get :index, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq deliver_period_list.to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq deliver_period_list.to_json
     end
 
     # GET /rest/deliver_periods.html
     it "no html view" do
       get :index
-      response.should_not render_template :index
-      response.status.should be(406)
+      expect(response).not_to render_template :index
+      expect(response.status).to eq(406)
     end
   end
 
@@ -26,9 +26,9 @@ describe Rest::DeliverPeriodsController do
       deliver_period = FactoryGirl.create(:deliver_period)
       deliver_period2 = FactoryGirl.create(:deliver_period)
       get :show, id: deliver_period, :format => :json
-      assigns(:deliver_period).should eq (deliver_period)
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq deliver_period.to_json
+      expect(assigns(:deliver_period)).to eq (deliver_period)
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq deliver_period.to_json
     end
   end
 

@@ -3,31 +3,31 @@ require 'spec_helper'
 describe Fetcher do
 
   it "has a valid factory" do
-    FactoryGirl.build(:fetcher).should be_valid
+    expect(FactoryGirl.build(:fetcher)).to be_valid
   end
 
   it "fails without provider" do
-    FactoryGirl.build(:fetcher, provider: nil).should_not be_valid
+    expect(FactoryGirl.build(:fetcher, provider: nil)).not_to be_valid
   end
 
   it "fails without status" do
-    FactoryGirl.build(:fetcher, status: nil).should_not be_valid
+    expect(FactoryGirl.build(:fetcher, status: nil)).not_to be_valid
   end
 
   it "fails without transport" do
-    FactoryGirl.build(:fetcher, transport: nil).should_not be_valid
+    expect(FactoryGirl.build(:fetcher, transport: nil)).not_to be_valid
   end
 
   it "fails without retain" do
-    FactoryGirl.build(:fetcher, retain: nil).should_not be_valid
+    expect(FactoryGirl.build(:fetcher, retain: nil)).not_to be_valid
   end
 
   it "fails without deliver_period" do
-    fetcher = FactoryGirl.build(:fetcher, deliver_period: nil).should_not be_valid
+    expect(FactoryGirl.build(:fetcher, deliver_period: nil)).not_to be_valid
   end
 
   it "fails without supply" do
-    fetcher = FactoryGirl.build(:fetcher, supply: nil).should_not be_valid
+    expect(FactoryGirl.build(:fetcher, supply: nil)).not_to be_valid
   end
 
   # TODO: How to do this validation
@@ -42,55 +42,55 @@ describe Fetcher do
 
   describe "charset" do
     it "fails if charset is not a known value" do
-      FactoryGirl.build(:fetcher, charset: "foo").should_not be_valid
+      expect(FactoryGirl.build(:fetcher, charset: "foo")).not_to be_valid
     end
 
     it "works if charset is a known value" do
-      FactoryGirl.build(:fetcher, charset: "utf-8").should be_valid
+      expect(FactoryGirl.build(:fetcher, charset: "utf-8")).to be_valid
     end
   end
 
   describe "set_limit" do
     it "fails if set limit isn't known value" do
-      FactoryGirl.build(:fetcher, set_limit: "bar").should_not be_valid
+      expect(FactoryGirl.build(:fetcher, set_limit: "bar")).not_to be_valid
     end
 
     it "works if set limit is known value" do
-      FactoryGirl.build(:fetcher, set_limit: "month").should be_valid
+      expect(FactoryGirl.build(:fetcher, set_limit: "month")).to be_valid
     end
   end
 
   describe "recursive" do
     it "fails if recursive isn't numeric" do
-      FactoryGirl.build(:fetcher, recursive: "bar").should_not be_valid
+      expect(FactoryGirl.build(:fetcher, recursive: "bar")).not_to be_valid
     end
 
     it "works if recursive is numeric" do
-      FactoryGirl.build(:fetcher, recursive: "10").should be_valid
+      expect(FactoryGirl.build(:fetcher, recursive: "10")).to be_valid
     end
   end
 
   describe "timeout" do
     it "fails if timeout isn't numeric" do
-      FactoryGirl.build(:fetcher, timeout: "bar").should_not be_valid
+      expect(FactoryGirl.build(:fetcher, timeout: "bar")).not_to be_valid
     end
 
     it "works if timeout is numeric" do
-      FactoryGirl.build(:fetcher, timeout: "10").should be_valid
+      expect(FactoryGirl.build(:fetcher, timeout: "10")).to be_valid
     end
   end
 
   describe "seperator" do
     it "fails if seperator isn't / or \\" do
-      FactoryGirl.build(:fetcher, seperator: "b").should_not be_valid
+      expect(FactoryGirl.build(:fetcher, seperator: "b")).not_to be_valid
     end
 
     it "works if seperator is /" do
-      FactoryGirl.build(:fetcher, seperator: "/").should be_valid
+      expect(FactoryGirl.build(:fetcher, seperator: "/")).to be_valid
     end
 
     it "works if seperator is \\" do
-      FactoryGirl.build(:fetcher, seperator: "\\").should be_valid
+      expect(FactoryGirl.build(:fetcher, seperator: "\\")).to be_valid
     end
   end
 

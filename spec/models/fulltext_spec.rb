@@ -3,21 +3,22 @@ require 'spec_helper'
 describe Fulltext do
 
   it "has a valid factory" do
-    FactoryGirl.build(:fulltext).should be_valid
+    expect(FactoryGirl.build(:fulltext)).to be_valid
   end
 
   it "fails without code" do
-    FactoryGirl.build(:fulltext, code: nil).should_not be_valid
+    expect(FactoryGirl.build(:fulltext, code: nil)).not_to be_valid
   end
 
   it "returns untranslated name" do
     fulltext = FactoryGirl.build(:fulltext)
-    fulltext.name.should eq "translation missing: en.shohisha.code.fulltext."+fulltext.code
+    expect(fulltext.name).to eq "translation missing: "+
+      "en.shohisha.code.fulltext."+fulltext.code
   end
 
   it "code is unique" do
     fulltext = FactoryGirl.create(:fulltext)
-    FactoryGirl.build(:fulltext, code: fulltext.code).should_not be_valid
+    expect(FactoryGirl.build(:fulltext, code: fulltext.code)).not_to be_valid
   end
 
   it "restrict delete with package" do
@@ -30,9 +31,8 @@ describe Fulltext do
       }
     )
     package.consumers_packages = [consumer_package]
-    assert_raise ActiveRecord::DeleteRestrictionError do
-      fulltext.destroy
-    end
+    expect{fulltext.destroy}.to raise_error(
+      ActiveRecord::DeleteRestrictionError)
   end
 
   it "restrict delete with provider" do
@@ -45,9 +45,8 @@ describe Fulltext do
       }
     )
     provider.consumers_providers = [consumer_provider]
-    assert_raise ActiveRecord::DeleteRestrictionError do
-      fulltext.destroy
-    end
+    expect{fulltext.destroy}.to raise_error(
+      ActiveRecord::DeleteRestrictionError)
   end
 
 end

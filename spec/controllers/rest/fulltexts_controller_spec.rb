@@ -8,14 +8,15 @@ describe Rest::FulltextsController do
     it "renders view" do
       fulltext_list = FactoryGirl.create_list(:fulltext, 3)
       get :index, :format => :json
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq fulltext_list.to_json
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq fulltext_list.to_json
     end
 
     # GET /rest/fulltexts.html
     it "no html view" do
       get :index
-      response.should_not render_template :index
+      expect(response).not_to render_template :index
+      expect(response.status).to eq 406
     end
   end
 
@@ -25,9 +26,9 @@ describe Rest::FulltextsController do
       fulltext = FactoryGirl.create(:fulltext)
       fulltext2 = FactoryGirl.create(:fulltext)
       get :show, id: fulltext, :format => :json
-      assigns(:fulltext).should eq (fulltext)
-      response.header['Content-Type'].should include 'application/json'
-      response.body.should eq fulltext.to_json
+      expect(assigns(:fulltext)).to eq (fulltext)
+      expect(response.header['Content-Type']).to include 'application/json'
+      expect(response.body).to eq fulltext.to_json
     end
   end
   
