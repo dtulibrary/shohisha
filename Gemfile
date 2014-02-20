@@ -37,9 +37,9 @@ end
 
 group :development do
   gem 'rails_best_practices'
-#  gem 'debugger'
+  gem 'debugger'
 end
 
 group :staging, :production do
-#  gem 'pg'
+  gem 'pg'
 end
