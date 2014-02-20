@@ -14,7 +14,7 @@ class Fetcher < ActiveRecord::Base
   belongs_to :supply
   attr_accessible :basename, :charset, :directory, :directory_filter,
     :file_filter, :format, :passive, :passkey, :recursive, :remote_delete,
-    :seperator, :set, :set_limit, :timeout, :username, :provider_id,
+    :seperator, :set, :set_limit, :timeout, :sleep_interval, :username, :provider_id,
     :status_id, :transport_id, :retain_id, :deliver_period_id, :supply_id,
     :realm, :port, :encryption
 

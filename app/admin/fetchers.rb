@@ -64,6 +64,8 @@ ActiveAdmin.register Fetcher do
         :wrapper_html => { :class => Transport.transport("passive") }
       f.input :timeout,
         :wrapper_html => { :class => Transport.transport("timeout") }
+      f.input :sleep_interval,
+        :wrapper_html => { :class => Transport.transport("sleep_interval") }
       f.input :realm,
         :wrapper_html => { :class => Transport.transport("realm") }
     end

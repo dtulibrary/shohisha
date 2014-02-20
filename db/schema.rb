@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131009085908) do
+ActiveRecord::Schema.define(:version => 20140220125454) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20131009085908) do
     t.string   "realm"
     t.integer  "port"
     t.string   "encryption"
+    t.integer  "sleep_interval"
   end
 
   add_index "fetchers", ["deliver_period_id"], :name => "index_fetchers_on_deliver_period_id"
@@ -193,6 +194,7 @@ ActiveRecord::Schema.define(:version => 20131009085908) do
     t.boolean  "uses_encryption",       :default => true, :null => false
     t.boolean  "uses_port",             :default => true, :null => false
     t.boolean  "uses_realm",            :default => true, :null => false
+    t.boolean  "uses_sleep_interval",   :default => true, :null => false
   end
 
   create_table "users", :force => true do |t|
