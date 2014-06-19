@@ -1,4 +1,4 @@
-class FetcherAddSleepInterval < ActiveRecord::Migration
+class FetcherAddProviderFormat < ActiveRecord::Migration
   def up
     add_column :fetchers, :provider_format, :string
     add_column :transports, :uses_provider_format, :boolean, :default => true,
