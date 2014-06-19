@@ -1,7 +1,7 @@
 class Transport < ActiveRecord::Base
   attr_accessible :code, :uses_basename, :uses_charset,
     :uses_directory, :uses_directory_filter, :uses_file_filter,
-    :uses_format, :uses_passive, :uses_passkey, :uses_recursive,
+    :uses_format, :uses_passive, :uses_passkey, :uses_provider_format, :uses_recursive,
     :uses_remote_delete, :uses_seperator, :uses_set, :uses_set_limit,
     :uses_timeout, :uses_sleep_interval, :uses_username, :uses_realm, :uses_encryption,
     :uses_port

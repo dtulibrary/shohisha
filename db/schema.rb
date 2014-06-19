@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20140220125454) do
     t.integer  "port"
     t.string   "encryption"
     t.integer  "sleep_interval"
+    t.string   "provider_format"
   end
 
   add_index "fetchers", ["deliver_period_id"], :name => "index_fetchers_on_deliver_period_id"
@@ -195,6 +196,7 @@ ActiveRecord::Schema.define(:version => 20140220125454) do
     t.boolean  "uses_port",             :default => true, :null => false
     t.boolean  "uses_realm",            :default => true, :null => false
     t.boolean  "uses_sleep_interval",   :default => true, :null => false
+    t.boolean  "uses_provider_format",  :default => true, :null => false
   end
 
   create_table "users", :force => true do |t|

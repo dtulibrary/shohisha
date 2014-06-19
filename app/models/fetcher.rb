@@ -13,7 +13,7 @@ class Fetcher < ActiveRecord::Base
   belongs_to :deliver_period
   belongs_to :supply
   attr_accessible :basename, :charset, :directory, :directory_filter,
-    :file_filter, :format, :passive, :passkey, :recursive, :remote_delete,
+    :file_filter, :format, :passive, :passkey, :provider_format, :recursive, :remote_delete,
     :seperator, :set, :set_limit, :timeout, :sleep_interval, :username, :provider_id,
     :status_id, :transport_id, :retain_id, :deliver_period_id, :supply_id,
     :realm, :port, :encryption
