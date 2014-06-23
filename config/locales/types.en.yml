@@ -12,6 +12,7 @@ en:
       transport:
         'Data::Fetcher::FTP': 'FTP Transport'
         'Data::Fetcher::FTPS': 'FTP Secure Transport (FTPS)'
+        'Data::Fetcher::SFTP': 'SSH File Transfer (SFTP)'
         'Data::Fetcher::FS': 'File system'
         'Data::Fetcher::FS::Mail': 'Mail (File system)'
         'Data::Fetcher::FS::Cat': 'File system concat'
@@ -19,9 +20,15 @@ en:
         'DS2::Fetcher::Transport::OAI': 'OAI-PMH'
         'DS2::Fetcher::Transport::Sorbit': 'Sorbit'
         'DS2::Fetcher::Transport::Entrez': 'Entrez (PubMed)'
+        'DS2::Fetcher::Transport::FTP': 'DS2 FTP Transport'
+        'DS2::Fetcher::Transport::FTP::FTPS': 'DS2 FTP Secure Transport (FTPS)'
         'DS2::Fetcher::Transport::NTIS': 'DS2 NTIS'
         'DS2::Fetcher::Transport::TRAIL': 'DS2 TRAIL'
+        'DS2::Fetcher::Transport::DS1::ELSEVIER': 'DS1 Elsevier Backfiles'
         'DS2::Fetcher::Transport::File::ELSEVIER': 'DS2 Elsevier Backfiles'
+        'DS2::Fetcher::Transport::File::ISI': 'DS2 ISI Backfiles'
+        'DS2::Fetcher::Transport::File::NTIS': 'DS2 NTIS Backfiles'
+        'DS2::Fetcher::Transport::File::SCOPUS': 'DS2 Scopus Backfiles'
         'DS2::Fetcher::Transport::File::SCOPUS': 'DS2 Scopus Backfiles'
         'DS2::Fetcher::Transport::MAIL::SCOPUS': 'DS2 Scopus'
       status:
@@ -40,6 +47,7 @@ en:
         'cash': 'Cash transactions'
         'cover': 'Cover images'
         'book': 'Pbook Metadata'
+        'persons': 'Person Metadata'
       fulltext:
         'none': 'No handling'
         'default': 'Default handling'
