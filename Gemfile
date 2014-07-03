@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.0'
+gem 'rails', '3.2.19'
 gem 'railties'
 gem 'jquery-rails', '~> 2.3.0'
 gem 'activeadmin'
