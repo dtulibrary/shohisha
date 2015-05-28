@@ -34,6 +34,7 @@ en:
         'DS2::Fetcher::Transport::File::SCOPUS': 'DS2 Scopus Backfiles'
         'DS2::Fetcher::Transport::File::SCOPUS': 'DS2 Scopus Backfiles'
         'DS2::Fetcher::Transport::MAIL::SCOPUS': 'DS2 Scopus'
+        'DS2::Fetcher::Transport::ROMEO': 'DS2 Sherpa/Romeo HTTP'
       status:
         'test':  'Testing'
         'prod':  'Production'
