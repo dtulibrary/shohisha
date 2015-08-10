@@ -26,6 +26,7 @@ en:
         'DS2::Fetcher::Transport::SFTP': 'DS2 SSH File Transfer Protocol (SFTP)'
         'DS2::Fetcher::Transport::NTIS': 'DS2 NTIS'
         'DS2::Fetcher::Transport::TRAIL': 'DS2 TRAIL'
+        'DS2::Fetcher::Transport::PUREREST': 'DS2 Pure Rest Transport'
         'DS2::Fetcher::Transport::DS1': 'DS1 Fetcher'
         'DS2::Fetcher::Transport::DS1::ELSEVIER': 'DS1 Elsevier Backfiles'
         'DS2::Fetcher::Transport::File::ELSEVIER': 'DS2 Elsevier Backfiles'
