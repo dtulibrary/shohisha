@@ -29,6 +29,7 @@ en:
         'DS2::Fetcher::Transport::PUREREST': 'DS2 Pure Rest Transport'
         'DS2::Fetcher::Transport::DS1': 'DS1 Fetcher'
         'DS2::Fetcher::Transport::DS1::ELSEVIER': 'DS1 Elsevier Backfiles'
+        'DS2::Fetcher::Transport::FILE': 'Local File System'
         'DS2::Fetcher::Transport::File::ELSEVIER': 'DS2 Elsevier Backfiles'
         'DS2::Fetcher::Transport::File::ISI': 'DS2 ISI Backfiles'
         'DS2::Fetcher::Transport::File::NTIS': 'DS2 NTIS Backfiles'
