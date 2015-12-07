@@ -18,6 +18,7 @@ en:
         'Data::Fetcher::FS::Cat': 'File system concat'
         'Data::Fetcher::HTTP': 'HTTP single file'
         'PS::Fetcher::Transport::OAI': 'Personstore OAI-PMH'
+        'DS2::FTP': 'FTP Simple'
         'DS2::Fetcher::Transport::OAI': 'DS2 OAI-PMH'
         'DS2::Fetcher::Transport::Sorbit': 'Sorbit'
         'DS2::Fetcher::Transport::Entrez': 'Entrez (PubMed)'
@@ -55,6 +56,7 @@ en:
         'cover': 'Cover images'
         'book': 'Pbook Metadata'
         'persons': 'Person Metadata'
+        'fulltexts': 'Fulltexts'
       fulltext:
         'none': 'No handling'
         'default': 'Default handling'
