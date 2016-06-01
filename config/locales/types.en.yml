@@ -23,6 +23,7 @@ en:
         'DS2::Fetcher::Transport::Sorbit': 'Sorbit'
         'DS2::Fetcher::Transport::Entrez': 'Entrez (PubMed)'
         'DS2::Fetcher::Transport::FTP': 'DS2 FTP Transport'
+        'DS2::Fetcher::Transport::FTP::CUP': 'DS2 FTP Cup'
         'DS2::Fetcher::Transport::FTPS': 'DS2 FTP over SSL (FTPS)'
         'DS2::Fetcher::Transport::SFTP': 'DS2 SSH File Transfer Protocol (SFTP)'
         'DS2::Fetcher::Transport::SFTP::ELSEVIER': 'DS2 ELSEVIER SFTP'
@@ -36,7 +37,7 @@ en:
         'DS2::Fetcher::Transport::FILE::ISI': 'DS2 ISI Backfiles'
         'DS2::Fetcher::Transport::FILE::NTIS': 'DS2 NTIS Backfiles'
         'DS2::Fetcher::Transport::FILE::SCOPUS': 'DS2 Scopus Backfiles'
-        'DS2::Fetcher::Transport::FILE::SCOPUS': 'DS2 Scopus Backfiles'
+        'DS2::Fetcher::Transport::FILE::CUP': 'DS2 Cup Backfiles'
         'DS2::Fetcher::Transport::MAIL::SCOPUS': 'DS2 Scopus'
         'DS2::Fetcher::Transport::ROMEO': 'DS2 Sherpa/Romeo HTTP'
       status:
@@ -63,7 +64,7 @@ en:
         'sfx': 'Handle through SFX'
       deliver_period:
         'day': 'Daily'
-        'week': 'Weekly'
+        'weekly': 'Weekly'
         'month': 'Monthly'
         'bimonth': 'Bimonthly'
         'quarter': 'Quarterly'
