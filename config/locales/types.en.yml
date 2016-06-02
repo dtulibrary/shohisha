@@ -25,6 +25,7 @@ en:
         'DS2::Fetcher::Transport::FTP': 'DS2 FTP Transport'
         'DS2::Fetcher::Transport::FTP::CUP': 'DS2 FTP Cup'
         'DS2::Fetcher::Transport::FTPS': 'DS2 FTP over SSL (FTPS)'
+        'DS2::Fetcher::Transport::FTPS::IELBOOK': 'IELBOOK FTP over SSL (FTPS)'
         'DS2::Fetcher::Transport::SFTP': 'DS2 SSH File Transfer Protocol (SFTP)'
         'DS2::Fetcher::Transport::SFTP::ELSEVIER': 'DS2 ELSEVIER SFTP'
         'DS2::Fetcher::Transport::NTIS': 'DS2 NTIS'
