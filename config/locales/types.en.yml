@@ -60,6 +60,7 @@ en:
         'book': 'Pbook Metadata'
         'persons': 'Person Metadata'
         'fulltexts': 'Fulltexts'
+        'snippets': 'Snippets'
       fulltext:
         'none': 'No handling'
         'default': 'Default handling'
