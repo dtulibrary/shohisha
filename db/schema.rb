@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161122131657) do
+ActiveRecord::Schema.define(:version => 20161122133333) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -66,17 +66,17 @@ ActiveRecord::Schema.define(:version => 20161122131657) do
   end
 
   create_table "fetchers", :force => true do |t|
-    t.integer  "provider_id",                                             :null => false
-    t.integer  "status_id",                                               :null => false
-    t.integer  "transport_id",                                            :null => false
-    t.integer  "retain_id",                                               :null => false
+    t.integer  "provider_id",                                            :null => false
+    t.integer  "status_id",                                              :null => false
+    t.integer  "transport_id",                                           :null => false
+    t.integer  "retain_id",                                              :null => false
     t.string   "username"
     t.string   "passkey"
     t.string   "basename"
     t.string   "directory"
     t.string   "seperator"
     t.string   "file_filter"
-    t.string   "directory_filter",      :limit => 1024
+    t.string   "directory_filter",     :limit => 1024
     t.string   "format"
     t.string   "set"
     t.string   "set_limit"
@@ -85,16 +85,16 @@ ActiveRecord::Schema.define(:version => 20161122131657) do
     t.boolean  "remote_delete"
     t.boolean  "passive"
     t.integer  "timeout"
-    t.datetime "created_at",                                              :null => false
-    t.datetime "updated_at",                                              :null => false
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
     t.integer  "deliver_period_id"
-    t.integer  "supply_id",                             :default => 0,    :null => false
+    t.integer  "supply_id",                            :default => 0,    :null => false
     t.string   "realm"
     t.integer  "port"
     t.string   "encryption"
     t.integer  "sleep_interval"
     t.string   "provider_format"
-    t.boolean  "ignore_duplicate_name",                 :default => true
+    t.boolean  "allow_duplicate_name",                 :default => true
   end
 
   add_index "fetchers", ["deliver_period_id"], :name => "index_fetchers_on_deliver_period_id"
