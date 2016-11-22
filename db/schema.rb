@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161122133333) do
+ActiveRecord::Schema.define(:version => 20161122143636) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -175,29 +175,30 @@ ActiveRecord::Schema.define(:version => 20161122133333) do
   end
 
   create_table "transports", :force => true do |t|
-    t.string   "code",                                    :null => false
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
-    t.boolean  "uses_basename",         :default => true, :null => false
-    t.boolean  "uses_charset",          :default => true, :null => false
-    t.boolean  "uses_directory",        :default => true, :null => false
-    t.boolean  "uses_directory_filter", :default => true, :null => false
-    t.boolean  "uses_file_filter",      :default => true, :null => false
-    t.boolean  "uses_format",           :default => true, :null => false
-    t.boolean  "uses_passive",          :default => true, :null => false
-    t.boolean  "uses_passkey",          :default => true, :null => false
-    t.boolean  "uses_recursive",        :default => true, :null => false
-    t.boolean  "uses_remote_delete",    :default => true, :null => false
-    t.boolean  "uses_seperator",        :default => true, :null => false
-    t.boolean  "uses_set",              :default => true, :null => false
-    t.boolean  "uses_set_limit",        :default => true, :null => false
-    t.boolean  "uses_timeout",          :default => true, :null => false
-    t.boolean  "uses_username",         :default => true, :null => false
-    t.boolean  "uses_encryption",       :default => true, :null => false
-    t.boolean  "uses_port",             :default => true, :null => false
-    t.boolean  "uses_realm",            :default => true, :null => false
-    t.boolean  "uses_sleep_interval",   :default => true, :null => false
-    t.boolean  "uses_provider_format",  :default => true, :null => false
+    t.string   "code",                                        :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.boolean  "uses_basename",             :default => true, :null => false
+    t.boolean  "uses_charset",              :default => true, :null => false
+    t.boolean  "uses_directory",            :default => true, :null => false
+    t.boolean  "uses_directory_filter",     :default => true, :null => false
+    t.boolean  "uses_file_filter",          :default => true, :null => false
+    t.boolean  "uses_format",               :default => true, :null => false
+    t.boolean  "uses_passive",              :default => true, :null => false
+    t.boolean  "uses_passkey",              :default => true, :null => false
+    t.boolean  "uses_recursive",            :default => true, :null => false
+    t.boolean  "uses_remote_delete",        :default => true, :null => false
+    t.boolean  "uses_seperator",            :default => true, :null => false
+    t.boolean  "uses_set",                  :default => true, :null => false
+    t.boolean  "uses_set_limit",            :default => true, :null => false
+    t.boolean  "uses_timeout",              :default => true, :null => false
+    t.boolean  "uses_username",             :default => true, :null => false
+    t.boolean  "uses_encryption",           :default => true, :null => false
+    t.boolean  "uses_port",                 :default => true, :null => false
+    t.boolean  "uses_realm",                :default => true, :null => false
+    t.boolean  "uses_sleep_interval",       :default => true, :null => false
+    t.boolean  "uses_provider_format",      :default => true, :null => false
+    t.boolean  "uses_allow_duplicate_name", :default => true, :null => false
   end
 
   create_table "users", :force => true do |t|
