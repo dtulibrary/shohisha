@@ -3,7 +3,7 @@ class Transport < ActiveRecord::Base
     :uses_directory, :uses_directory_filter, :uses_file_filter,
     :uses_format, :uses_passive, :uses_passkey, :uses_provider_format, :uses_recursive,
     :uses_remote_delete, :uses_seperator, :uses_set, :uses_set_limit,
-    :uses_timeout, :uses_sleep_interval, :uses_ignore_duplicate_name, :uses_username, :uses_realm, :uses_encryption,
+    :uses_timeout, :uses_sleep_interval, :uses_allow_duplicate_name, :uses_username, :uses_realm, :uses_encryption,
     :uses_port
 
   has_many :fetchers, :dependent => :restrict
