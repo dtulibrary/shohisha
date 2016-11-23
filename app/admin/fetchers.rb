@@ -66,8 +66,8 @@ ActiveAdmin.register Fetcher do
         :wrapper_html => { :class => Transport.transport("timeout") }
       f.input :sleep_interval,
         :wrapper_html => { :class => Transport.transport("sleep_interval") }
-      f.input :allow_duplicate_name,
-        :wrapper_html => { :class => Transport.transport("allow_duplicate_name") }
+      f.input :ignore_duplicate_name,
+        :wrapper_html => { :class => Transport.transport("ignore_duplicate_name") }
       f.input :provider_format,
         :wrapper_html => { :class => Transport.transport("provider_format") }
       f.input :realm,
